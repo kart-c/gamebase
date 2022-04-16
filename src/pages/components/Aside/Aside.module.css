@@ -29,12 +29,14 @@
 	display: block;
 	padding: 4px 0;
 	color: var(--text-primary);
+	transition: color 0.2s ease-in;
 }
 
 .sideNav a:hover {
-	opacity: 0.9;
+	transition: color 0.2s ease-in;
+	color: var(--btn-primary);
 }
 
 .sideNav a:active {
-	opacity: 0.7;
+	opacity: 0.9;
 }
