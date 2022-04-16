@@ -1,6 +1,6 @@
 .card {
 	background-color: var(--bg-secondary);
-	max-width: 28rem;
+	max-width: 32rem;
 	height: 26.4rem;
 	cursor: pointer;
 }
