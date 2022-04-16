@@ -1,7 +1,7 @@
 .cardContainer {
 	list-style: none;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
 	grid-gap: 2.4rem;
 	margin-right: 2.4rem;
 }
