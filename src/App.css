@@ -18,6 +18,14 @@ body {
 .pg-defaults {
 	margin-top: 9.6rem;
 	margin-left: 26.4rem;
+	transition: margin 0.2s ease-in;
+}
+
+@media only screen and (max-width: 840px) {
+	.pg-defaults {
+		margin-left: 8.8rem;
+		transition: margin 0.2s ease-in;
+	}
 }
 
 /* for development purposes to avoid overlay bug */

@@ -6,6 +6,7 @@
 	position: fixed;
 	top: 7.2rem;
 	background-color: var(--bg-secondary);
+	transition: width 0.2s ease-in;
 }
 
 .sideNav {
@@ -39,4 +40,15 @@
 
 .sideNav a:active {
 	opacity: 0.9;
+}
+
+@media only screen and (max-width: 840px) {
+	.aside {
+		width: 6.4rem;
+		transition: width 0.2s ease-in;
+	}
+
+	.sideNav span {
+		display: none;
+	}
 }

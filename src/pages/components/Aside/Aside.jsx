@@ -8,33 +8,33 @@ const Aside = () => {
 			<nav>
 				<ul className={styles.sideNav}>
 					<li>
-						<Link to="/">
+						<Link to="/" title="Explore">
 							<i className="fa-solid fa-compass"></i>
-							Explore
+							<span>Explore</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/">
+						<Link to="/" title="Playlists">
 							<i className="fa-solid fa-list-ul"></i>
-							Playlists
+							<span>Playlists</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/">
+						<Link to="/" title="Watch Later">
 							<i className="fa-solid fa-clock"></i>
-							Watch Later
+							<span>Watch Later</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/">
+						<Link to="/" title="Liked">
 							<i className="fa-solid fa-thumbs-up"></i>
-							Liked
+							<span>Liked</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/">
+						<Link to="/" title="History">
 							<i className="fa-solid fa-clock-rotate-left"></i>
-							History
+							<span>History</span>
 						</Link>
 					</li>
 				</ul>
