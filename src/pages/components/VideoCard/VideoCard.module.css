@@ -17,6 +17,7 @@
 	padding: 10px 8px;
 	display: flex;
 	align-items: center;
+	height: calc(100% - 65% - 20px);
 }
 
 .content img {
