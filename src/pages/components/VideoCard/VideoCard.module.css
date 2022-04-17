@@ -3,6 +3,7 @@
 	max-width: 32rem;
 	height: 26.4rem;
 	cursor: pointer;
+	position: relative;
 }
 
 .cardImg {
@@ -17,6 +18,15 @@
 	padding: 10px 8px;
 	display: flex;
 	align-items: flex-start;
+}
+
+.time {
+	position: absolute;
+	top: 12.9rem;
+	right: 8px;
+	background-color: var(--white-secondary);
+	color: var(--bg-secondary);
+	padding: 4px 8px;
 }
 
 .content img {
