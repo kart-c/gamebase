@@ -17,6 +17,7 @@ const VideoCard = ({
 				<img src={videoThumbnail} alt={title} className="resp-img" loading="lazy" />
 			</div>
 			<div className={styles.content}>
+				<span className={styles.time}>{time}</span>
 				<img src={channelThumbnail} alt={channelName} className="avatar avatar-sm" loading="lazy" />
 				<div className={styles.videoDetails}>
 					<h4 title={title}>{title}</h4>
