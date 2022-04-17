@@ -1,0 +1,23 @@
+.header {
+	background-color: var(--bg-secondary);
+	justify-content: space-between;
+	padding: 1.6rem 2.4rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.header h2 {
+	font-family: 'Bangers', 'Comic Sans MS', cursive;
+	letter-spacing: 4px;
+}
+
+.header input {
+	margin-left: 0;
+	max-width: 40rem;
+}
+
+.header a {
+	color: var(--white-primary);
+	font-size: var(--text-md);
+}

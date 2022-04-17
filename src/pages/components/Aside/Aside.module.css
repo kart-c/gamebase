@@ -1,0 +1,54 @@
+.aside {
+	box-sizing: border-box;
+	padding: 2.4rem;
+	height: calc(100vh - 7.2rem);
+	width: 24rem;
+	position: fixed;
+	top: 7.2rem;
+	background-color: var(--bg-secondary);
+	transition: width 0.2s ease-in;
+}
+
+.sideNav {
+	list-style: none;
+	font-size: var(--text-md);
+}
+
+.sideNav li:first-of-type {
+	margin: 0;
+}
+
+.sideNav li {
+	margin: 2.4rem 0;
+}
+
+.sideNav i {
+	margin-right: 10px;
+}
+
+.sideNav a {
+	display: block;
+	padding: 4px 0;
+	color: var(--text-primary);
+	transition: color 0.2s ease-in;
+}
+
+.sideNav a:hover {
+	transition: color 0.2s ease-in;
+	color: var(--btn-primary);
+}
+
+.sideNav a:active {
+	opacity: 0.9;
+}
+
+@media only screen and (max-width: 840px) {
+	.aside {
+		width: 6.4rem;
+		transition: width 0.2s ease-in;
+	}
+
+	.sideNav span {
+		display: none;
+	}
+}
