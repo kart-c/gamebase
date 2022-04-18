@@ -20,6 +20,7 @@
 
 .form label {
 	font-size: var(--text-md);
+	user-select: none;
 }
 
 .form input {
