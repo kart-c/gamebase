@@ -94,7 +94,7 @@ export const videos = [
 		videoThumbnail: 'https://i3.ytimg.com/vi/8bnGGp1yZY8/maxresdefault.jpg',
 		channelThumbnail:
 			'https://yt3.ggpht.com/ytc/AKedOLTfQAqQ-XusAu_uV9lSBEXjUPCfsDBHxHWYKv6B=s88-c-k-c0x00ffffff-no-rj',
-		channelName: 'DIZEUUL',
+		channelName: 'Fennec',
 		time: '7:01',
 		viewCount: '173K views',
 		likes: '2.1K',
