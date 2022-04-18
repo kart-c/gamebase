@@ -8,6 +8,7 @@ const Login = () => {
 	const [user, setUser] = useState({
 		email: '',
 		password: '',
+		rememberMe: false,
 	});
 	const { authDispatch } = useAuth();
 
@@ -58,7 +59,14 @@ const Login = () => {
 				</button>
 			</div>
 			<div className={`checkbox-container ${styles.checkboxContainer}`}>
-				<input type="checkbox" name="remember me" id="remember-me" className={styles.checkbox} />
+				<input
+					type="checkbox"
+					name="remember me"
+					id="remember-me"
+					className={styles.checkbox}
+					value={user.rememberMe}
+					onChange={() => setUser((prev) => ({ ...prev, rememberMe: !prev.rememberMe }))}
+				/>
 				<label htmlFor="remember-me">Remember me</label>
 			</div>
 			<button className={`${styles.btn} ${styles.primaryBtn}`} type="button" onClick={loginHandler}>
