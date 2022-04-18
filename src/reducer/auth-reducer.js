@@ -9,6 +9,9 @@ export const authReducer = (state, { type, payload }) => {
 		case 'FETCH_USER':
 			return { ...state, token: payload.token, user: payload.user };
 
+		case 'LOGOUT':
+			return { ...state, token: '', user: '' };
+
 		default:
 			throw new Error('NO CASE DEFINED IN AUTH REDUCER');
 	}

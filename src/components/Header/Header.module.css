@@ -8,9 +8,10 @@
 	z-index: 1;
 }
 
-.header h2 {
+.header h2 a {
 	font-family: 'Bangers', 'Comic Sans MS', cursive;
 	letter-spacing: 4px;
+	font-size: var(--text-xl);
 }
 
 .header input {
@@ -30,5 +31,21 @@
 }
 
 .header a:active {
+	opacity: 0.7;
+}
+
+.logoutBtn {
+	background-color: transparent;
+	font-size: 1.6rem;
+	color: var(--white-primary);
+	transition: color 0.2s ease-in;
+}
+
+.logoutBtn:hover {
+	color: var(--btn-primary);
+	transition: color 0.2s ease-in;
+}
+
+.logoutBtn:active {
 	opacity: 0.7;
 }
