@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useAuth } from '../../context';
+import { authHandler } from '../../utils/auth-handler';
 import styles from './Login.module.css';
 
 const Login = () => {
@@ -7,6 +9,7 @@ const Login = () => {
 		email: '',
 		password: '',
 	});
+	const { authDispatch } = useAuth();
 
 	const inputHandler = (e) => {
 		const name = e.target.name;
@@ -17,6 +20,8 @@ const Login = () => {
 			[name]: value,
 		}));
 	};
+
+	const loginHandler = () => authHandler('login', user, authDispatch);
 
 	return (
 		<form className={` ${styles.form}`}>
@@ -56,7 +61,7 @@ const Login = () => {
 				<input type="checkbox" name="remember me" id="remember-me" className={styles.checkbox} />
 				<label htmlFor="remember-me">Remember me</label>
 			</div>
-			<button className={`${styles.btn} ${styles.primaryBtn}`} type="button">
+			<button className={`${styles.btn} ${styles.primaryBtn}`} type="button" onClick={loginHandler}>
 				Login
 			</button>
 			<div className={styles.seperator}></div>
