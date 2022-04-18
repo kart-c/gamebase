@@ -7,7 +7,7 @@ export const videos = [
 	{
 		_id: 'hvoD7ehZPcM',
 		title: 'Grand Theft Auto V: The Official Trailer',
-		videoThumbnail: 'https://i3.ytimg.com/vi/68pYm_KgptU/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/hvoD7ehZPcM/maxresdefault.jpg',
 		channelThumbnail:
 			'https://yt3.ggpht.com/r7mISTzNbcLem_plduc_SKMh9KUiP8CWnuhS7H4-CCErF4juXxkrK-5_4LOIMeYl-lXAXMUG=s88-c-k-c0x00ffffff-no-rj',
 		channelName: 'Rockstar Games',
