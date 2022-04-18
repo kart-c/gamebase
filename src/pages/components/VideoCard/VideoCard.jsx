@@ -1,20 +1,30 @@
 import React from 'react';
 import styles from './VideoCard.module.css';
 
-const VideoCard = () => {
+const VideoCard = ({
+	_id,
+	channelName,
+	channelThumbnail,
+	likes,
+	time,
+	title,
+	videoThumbnail,
+	viewCount,
+}) => {
 	return (
 		<article className={styles.card}>
 			<div className={styles.cardImg}>
-				<img src="https://picsum.photos/300" alt="" className="resp-img" />
+				<img src={videoThumbnail} alt={title} className="resp-img" loading="lazy" />
 			</div>
 			<div className={styles.content}>
-				<img src="https://picsum.photos/300" alt="user avatar" className="avatar avatar-sm" />
+				<span className={styles.time}>{time}</span>
+				<img src={channelThumbnail} alt={channelName} className="avatar avatar-sm" loading="lazy" />
 				<div className={styles.videoDetails}>
-					<h4 title="title">Video Titleaaaaaaaaaaaaaaaaaaaaaaaa</h4>
-					<h5 title="title">Channel name</h5>
+					<h4 title={title}>{title}</h4>
+					<h5 title={channelName}>{channelName}</h5>
 					<div>
-						<span>244 views </span>
-						<span> 2 days ago</span>
+						<span>{viewCount} | </span>
+						<span>{likes} likes</span>
 					</div>
 				</div>
 				<button className={styles.options}>

@@ -1,25 +1,24 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { getVideos } from '../../utils/get-videos';
 import { CardContainer, VideoCard } from '../components';
 
 const Home = () => {
+	const [videos, setVideos] = useState([]);
+
+	useEffect(() => {
+		getVideos(setVideos);
+	}, []);
+
 	return (
 		<div className="pg-defaults">
 			<CardContainer>
-				<li>
-					<VideoCard />
-				</li>
-				<li>
-					<VideoCard />
-				</li>
-				<li>
-					<VideoCard />
-				</li>
-				<li>
-					<VideoCard />
-				</li>
-				<li>
-					<VideoCard />
-				</li>
+				{videos.length > 0
+					? videos.map((video) => (
+							<li key={video._id}>
+								<VideoCard {...video} />
+							</li>
+					  ))
+					: null}
 			</CardContainer>
 		</div>
 	);
