@@ -3,6 +3,20 @@ import styles from './Login.module.css';
 
 const Login = () => {
 	const [passwordVisible, setPasswordVisible] = useState(false);
+	const [user, setUser] = useState({
+		email: '',
+		password: '',
+	});
+
+	const inputHandler = (e) => {
+		const name = e.target.name;
+		const value = e.target.value;
+
+		setUser((prev) => ({
+			...prev,
+			[name]: value,
+		}));
+	};
 
 	return (
 		<form className={` ${styles.form}`}>
@@ -11,7 +25,14 @@ const Login = () => {
 				<label htmlFor="email" className={styles.firstLabel}>
 					Email Address
 				</label>
-				<input type="email" id="email" name="email" placeholder="johndoe@gmail.com" />
+				<input
+					type="email"
+					id="email"
+					name="email"
+					placeholder="johndoe@gmail.com"
+					value={user.email}
+					onChange={inputHandler}
+				/>
 			</div>
 			<div className={`input-container ${styles.passwordContainer} ${styles.inputContainer}`}>
 				<label htmlFor="password">Password</label>
@@ -20,6 +41,8 @@ const Login = () => {
 					id="password"
 					name="password"
 					placeholder="************"
+					value={user.password}
+					onChange={inputHandler}
 				/>
 				<button
 					className={styles.showPasswordBtn}
