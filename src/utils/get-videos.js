@@ -1,4 +1,4 @@
-import { fetchVideos } from '../services/fetch-videos';
+import { fetchVideos } from '../services/fetch-videos.service';
 
 export const getVideos = async (setVideos) => {
 	try {
