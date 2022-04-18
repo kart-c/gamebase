@@ -49,11 +49,11 @@ const Signup = () => {
 				<label htmlFor="remember-me">Remember me</label>
 			</div>
 			<button className={`${styles.btn} ${styles.primaryBtn}`} type="button">
-				Login
+				Signup
 			</button>
 			<div className={styles.seperator}></div>
 			<button className={`${styles.btn} ${styles.secondaryBtn}`} type="button">
-				Signup
+				Login
 			</button>
 		</form>
 	);
