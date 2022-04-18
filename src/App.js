@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Home } from './pages';
-import { Aside, Header } from './pages/components';
+import { Aside, Header } from './components';
 
 function App() {
 	return (
