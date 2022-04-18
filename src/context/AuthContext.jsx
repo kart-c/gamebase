@@ -1,6 +1,7 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useReducer } from 'react';
+import { authReducer } from '../reducer/auth-reducer';
 
-const AuthContext = createContext({ token: '', user: {} });
+const AuthContext = createContext({ authState: { token: '', user: {} }, authDispatch: () => {} });
 
 const AuthProvider = ({ children }) => {
 	const [authState, authDispatch] = useReducer(authReducer, { token: '', user: {} });
