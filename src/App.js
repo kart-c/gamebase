@@ -9,7 +9,7 @@ function App() {
 	return (
 		<>
 			<Header />
-			{location.pathname !== '/login' || location.pathname !== '/signup' ? <Aside /> : null}
+			{location.pathname !== '/login' && location.pathname !== '/signup' ? <Aside /> : null}
 
 			<Routes>
 				<Route path="/" element={<Home />} />
