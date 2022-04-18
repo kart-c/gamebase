@@ -21,4 +21,14 @@
 .header a {
 	color: var(--white-primary);
 	font-size: var(--text-md);
+	transition: color 0.2s ease-in;
+}
+
+.header a:hover {
+	color: var(--btn-primary);
+	transition: color 0.2s ease-in;
+}
+
+.header a:active {
+	opacity: 0.7;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 
 const Header = () => {
@@ -6,7 +7,7 @@ const Header = () => {
 		<header className={`header ${styles.header}`}>
 			<h2>GAMEBASE</h2>
 			<input type="search" name="search" className="header-search" placeholder="Search..." />
-			<a href="">Login</a>
+			<Link to="/login">Login</Link>
 		</header>
 	);
 };
