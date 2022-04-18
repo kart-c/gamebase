@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context';
 import { authHandler } from '../../utils/auth-handler';
 import styles from './Login.module.css';
@@ -11,6 +12,7 @@ const Login = () => {
 		rememberMe: false,
 	});
 	const { authDispatch } = useAuth();
+	const navigate = useNavigate();
 
 	const inputHandler = (e) => {
 		const name = e.target.name;
@@ -22,7 +24,7 @@ const Login = () => {
 		}));
 	};
 
-	const loginHandler = () => authHandler('login', user, authDispatch);
+	const loginHandler = () => authHandler('login', user, authDispatch, setUser, navigate);
 
 	return (
 		<form className={` ${styles.form}`}>
