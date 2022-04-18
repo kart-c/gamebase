@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context';
 import { authHandler } from '../../utils/auth-handler';
 import styles from './Login.module.css';
@@ -75,9 +75,9 @@ const Login = () => {
 				Login
 			</button>
 			<div className={styles.seperator}></div>
-			<button className={`${styles.btn} ${styles.secondaryBtn}`} type="button">
+			<Link to="/signup" className={`${styles.btn} ${styles.secondaryBtn}`}>
 				Signup
-			</button>
+			</Link>
 		</form>
 	);
 };

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../Login/Login.module.css';
 
 const Signup = () => {
@@ -52,9 +53,9 @@ const Signup = () => {
 				Signup
 			</button>
 			<div className={styles.seperator}></div>
-			<button className={`${styles.btn} ${styles.secondaryBtn}`} type="button">
+			<Link to="/login" className={`${styles.btn} ${styles.secondaryBtn}`}>
 				Login
-			</button>
+			</Link>
 		</form>
 	);
 };
