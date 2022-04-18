@@ -33,9 +33,13 @@ const Login = () => {
 				<input type="checkbox" name="remember me" id="remember-me" className={styles.checkbox} />
 				<label htmlFor="remember-me">Remember me</label>
 			</div>
-			<button className={`${styles.btn} ${styles.primaryBtn}`}>Login</button>
+			<button className={`${styles.btn} ${styles.primaryBtn}`} type="button">
+				Login
+			</button>
 			<div className={styles.seperator}></div>
-			<button className={`${styles.btn} ${styles.secondaryBtn}`}>Signup</button>
+			<button className={`${styles.btn} ${styles.secondaryBtn}`} type="button">
+				Signup
+			</button>
 		</form>
 	);
 };
