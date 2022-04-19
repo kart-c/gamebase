@@ -24,7 +24,8 @@ const Login = () => {
 		}));
 	};
 
-	const loginHandler = () => authHandler('login', user, authDispatch, setUser, navigate);
+	const loginHandler = () =>
+		authHandler({ authType: 'login', user, authDispatch, setUser, navigate });
 
 	return (
 		<form className={` ${styles.form}`}>

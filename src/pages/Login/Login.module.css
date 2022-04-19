@@ -10,6 +10,20 @@
 	text-align: center;
 }
 
+.nameContainer {
+	display: flex;
+	gap: 1.6rem;
+}
+
+.nameContainer > div {
+	margin-top: 0;
+	width: 50%;
+}
+
+.nameContainer input {
+	min-width: 8rem;
+}
+
 .inputContainer {
 	margin: 1.6rem 0 8px;
 }
