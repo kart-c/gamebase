@@ -1,0 +1,43 @@
+.pageDetails {
+	height: 100vh;
+	width: 30.4rem;
+}
+
+.imgContainer {
+	position: relative;
+	height: 20rem;
+}
+
+.imgContainer img {
+	height: 100%;
+}
+
+.imgContainer button {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 10px 0;
+	background-color: var(--btn-secondary);
+	color: var(--white-primary);
+	font-size: var(--text-md);
+}
+
+.title {
+	font-weight: 400;
+	margin: 1.6rem 0;
+}
+
+.description {
+	font-size: 1.4rem;
+}
+
+.description span:first-of-type::after {
+	content: '';
+	display: inline-block;
+	height: 6px;
+	width: 6px;
+	border-radius: 50%;
+	background-color: var(--white-primary);
+	margin: 0 6px 1px;
+}
