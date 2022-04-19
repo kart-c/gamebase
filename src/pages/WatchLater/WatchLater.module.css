@@ -1,0 +1,4 @@
+.pgContainer {
+	display: flex;
+	width: calc(100% - 28.8rem);
+}
