@@ -1,0 +1,47 @@
+.hrCard {
+	box-sizing: border-box;
+	display: flex;
+	max-width: 72rem;
+	width: 100%;
+	padding: 1.6rem;
+	background-color: var(--bg-secondary);
+}
+
+.imgContainer {
+	position: relative;
+}
+
+.imgContainer img {
+	height: 8rem;
+	width: 16rem;
+	display: block;
+}
+
+.imgContainer span {
+	position: absolute;
+	bottom: 8px;
+	right: 8px;
+	background-color: var(--white-secondary);
+	color: var(--bg-secondary);
+	padding: 4px 8px;
+}
+
+.content {
+	margin-left: 1.6rem;
+}
+
+.title {
+	font-weight: 500;
+	line-height: normal;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.content h5 {
+	margin-top: 2.4rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	color: var(--lynx-grey);
+}
