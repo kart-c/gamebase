@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getVideos } from '../../utils/get-videos';
-import { CardContainer, VideoCard } from '../components';
+import { CardContainer, VideoCard } from '../../components';
 
 const Home = () => {
 	const [videos, setVideos] = useState([]);

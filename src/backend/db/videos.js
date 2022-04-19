@@ -26,7 +26,7 @@ export const videos = [
 	{
 		_id: 'hvoD7ehZPcM',
 		title: 'Grand Theft Auto V: The Official Trailer',
-		videoThumbnail: 'https://i3.ytimg.com/vi/hvoD7ehZPcM/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/hvoD7ehZPcM/hqdefault.jpg',
 		channelThumbnail: rockstar,
 		channelName: 'Rockstar Games',
 		time: '1:00',
@@ -39,7 +39,7 @@ export const videos = [
 	{
 		_id: 'eaW0tYpxyp0',
 		title: 'Red Dead Redemption 2: Official Trailer',
-		videoThumbnail: 'https://i3.ytimg.com/vi/eaW0tYpxyp0/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/eaW0tYpxyp0/hqdefault.jpg',
 		channelThumbnail: rockstar,
 		channelName: 'Rockstar Games',
 		time: '2:08',
@@ -52,7 +52,7 @@ export const videos = [
 	{
 		_id: '68pYm_KgptU',
 		title: 'God of War: Ragnarok - Official Gameplay Trailer',
-		videoThumbnail: 'https://i3.ytimg.com/vi/68pYm_KgptU/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/68pYm_KgptU/hqdefault.jpg',
 		channelThumbnail: ign,
 		channelName: 'IGN',
 		time: '3:16',
@@ -65,7 +65,7 @@ export const videos = [
 	{
 		_id: 'TTaCrP_U4ao',
 		title: 'Age of Empires IV - Gameplay Trailer',
-		videoThumbnail: 'https://i3.ytimg.com/vi/TTaCrP_U4ao/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/TTaCrP_U4ao/hqdefault.jpg',
 		channelThumbnail: xbox,
 		channelName: 'Xbox',
 		time: '5:54',
@@ -78,7 +78,7 @@ export const videos = [
 	{
 		_id: 'Yxwgg35Bt5E',
 		title: 'Need For Speed Hot Pursuit 2010 PC Gameplay Part 4 Maximus Settings 720p HD',
-		videoThumbnail: 'https://i3.ytimg.com/vi/Yxwgg35Bt5E/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/Yxwgg35Bt5E/hqdefault.jpg',
 		channelThumbnail: MrEdxwx,
 		channelName: 'MrEdxwx',
 		time: '13:12',
@@ -91,7 +91,7 @@ export const videos = [
 	{
 		_id: '_pbBqHhmYbs',
 		title: 'Forza Horizon 5 - Koenigsegg Jesko | Goliath Race Gameplay',
-		videoThumbnail: 'https://i3.ytimg.com/vi/_pbBqHhmYbs/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/_pbBqHhmYbs/hqdefault.jpg',
 		channelThumbnail: DIZEUUL,
 		channelName: 'DIZEUUL',
 		time: '11:25',
@@ -104,7 +104,7 @@ export const videos = [
 	{
 		_id: '8bnGGp1yZY8',
 		title: 'Sekiro | Genichiro Ashina Boss Fight [1440p | 60Fps]',
-		videoThumbnail: 'https://i3.ytimg.com/vi/8bnGGp1yZY8/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/8bnGGp1yZY8/hqdefault.jpg',
 		channelThumbnail: Fennec,
 		channelName: 'Fennec',
 		time: '7:01',
@@ -117,7 +117,7 @@ export const videos = [
 	{
 		_id: 'WEwFpaL6X3w',
 		title: 'Sekiro Shadows Die Twice PS5 - Isshin The Sword Saint Boss Fight & Ending (4K 60FPS)',
-		videoThumbnail: 'https://i3.ytimg.com/vi/WEwFpaL6X3w/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/WEwFpaL6X3w/hqdefault.jpg',
 		channelThumbnail: Shirrako,
 		channelName: 'Shirrako',
 		time: '11:27',
@@ -129,7 +129,7 @@ export const videos = [
 	{
 		_id: 'd74REG039Dk',
 		title: 'Grand Theft Auto 5 Gameplay (PS4 HD) [1080p]',
-		videoThumbnail: 'https://i3.ytimg.com/vi/d74REG039Dk/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/d74REG039Dk/hqdefault.jpg',
 		channelThumbnail: Throneful,
 		channelName: 'Throneful',
 		time: '13:45',
@@ -141,7 +141,7 @@ export const videos = [
 	{
 		_id: 'wQATS4HOxdo',
 		title: 'Horizon Forbidden West - State of Play Gameplay Reveal | PS5',
-		videoThumbnail: 'https://i3.ytimg.com/vi/wQATS4HOxdo/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/wQATS4HOxdo/hqdefault.jpg',
 		channelThumbnail: PlayStation,
 		channelName: 'PlayStation',
 		time: '19:10',
@@ -154,7 +154,7 @@ export const videos = [
 	{
 		_id: '2AZmuZNu5LA',
 		title: 'Hogwarts Legacy - State of Play Official Gameplay Reveal | PS5, PS4',
-		videoThumbnail: 'https://i3.ytimg.com/vi/2AZmuZNu5LA/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/2AZmuZNu5LA/hqdefault.jpg',
 		channelThumbnail: PlayStation,
 		channelName: 'PlayStation',
 		time: '14:43',
@@ -167,7 +167,7 @@ export const videos = [
 	{
 		_id: 'yAk_ZNbq0k4',
 		title: 'WW2 - Normandy Landings - D-Day - Call of Duty WW2',
-		videoThumbnail: 'https://i3.ytimg.com/vi/yAk_ZNbq0k4/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/yAk_ZNbq0k4/hqdefault.jpg',
 		channelThumbnail: igcompany,
 		channelName: 'igcompany',
 		time: '22:46',
@@ -180,7 +180,7 @@ export const videos = [
 	{
 		_id: '0d-U2QL2Qvc',
 		title: 'Red Dead Redemption 2 - Combat & Open World Free Roam Gameplay',
-		videoThumbnail: 'https://i3.ytimg.com/vi/0d-U2QL2Qvc/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/0d-U2QL2Qvc/hqdefault.jpg',
 		channelThumbnail: DKGames,
 		channelName: 'DKGames',
 		time: '12:05',
@@ -193,7 +193,7 @@ export const videos = [
 	{
 		_id: '_lV2r7kORKs',
 		title: 'Civilization 6 Review',
-		videoThumbnail: 'https://i3.ytimg.com/vi/_lV2r7kORKs/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/_lV2r7kORKs/hqdefault.jpg',
 		channelThumbnail: ign,
 		channelName: 'IGN',
 		time: '4:13',
@@ -205,7 +205,7 @@ export const videos = [
 	{
 		_id: 'ST5ZNfXgyYI',
 		title: 'Age of Empires IV - The Delhi Sultanate',
-		videoThumbnail: 'https://i3.ytimg.com/vi/ST5ZNfXgyYI/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/ST5ZNfXgyYI/hqdefault.jpg',
 		channelThumbnail: AOE,
 		channelName: 'Age of Empires',
 		time: '3:22',
@@ -218,7 +218,7 @@ export const videos = [
 	{
 		_id: 'ICRuSQ3Ilkk',
 		title: 'Age of Empires 4 - 1v1 INTENSE BATTLES | Multiplayer Gameplay',
-		videoThumbnail: 'https://i3.ytimg.com/vi/ICRuSQ3Ilkk/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/ICRuSQ3Ilkk/hqdefault.jpg',
 		channelThumbnail: SergiuHellDragoonHQ,
 		channelName: 'SergiuHellDragoonHQ',
 		time: '50:58',
@@ -230,7 +230,7 @@ export const videos = [
 	{
 		_id: 'aCek0vSQ2GE',
 		title: 'F1 2021 Gameplay (PS5 UHD) [4K60FPS]',
-		videoThumbnail: 'https://i3.ytimg.com/vi/aCek0vSQ2GE/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/aCek0vSQ2GE/hqdefault.jpg',
 		channelThumbnail: Throneful,
 		channelName: 'Throneful',
 		time: '13:13',
@@ -242,7 +242,7 @@ export const videos = [
 	{
 		_id: 'OiOXJIYkSXw',
 		title: 'Forza Horizon 5 4K Official Announcement Trailer',
-		videoThumbnail: 'https://i3.ytimg.com/vi/OiOXJIYkSXw/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/OiOXJIYkSXw/hqdefault.jpg',
 		channelThumbnail: GameSpot,
 		channelName: 'GameSpot',
 		time: '1:55',
@@ -256,7 +256,7 @@ export const videos = [
 		_id: 'AJm-cwt0Ba8',
 		title:
 			'Need For Speed: Hot Pursuit on PS5 - 16 Minutes of Gameplay (Free Drive, Police Chases)',
-		videoThumbnail: 'https://i3.ytimg.com/vi/AJm-cwt0Ba8/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/AJm-cwt0Ba8/hqdefault.jpg',
 		channelThumbnail: RVG,
 		channelName: 'Racing Video Games',
 		time: '16:05',
@@ -268,7 +268,7 @@ export const videos = [
 	{
 		_id: 'j2j1RT5vJ8w',
 		title: 'Spider-Man PS5 - MCU Iron Spider Suit (4K)',
-		videoThumbnail: 'https://i3.ytimg.com/vi/j2j1RT5vJ8w/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/j2j1RT5vJ8w/hqdefault.jpg',
 		channelThumbnail: RVG,
 		channelName: 'Racing Video Games',
 		time: '08:36',
@@ -280,7 +280,7 @@ export const videos = [
 	{
 		_id: 'OwVe4ZNeQZk',
 		title: `E3 Cinematic Trailer - Assassin's Creed 4 Black Flag [UK]`,
-		videoThumbnail: 'https://i3.ytimg.com/vi/OwVe4ZNeQZk/maxresdefault.jpg',
+		videoThumbnail: 'https://i3.ytimg.com/vi/OwVe4ZNeQZk/hqdefault.jpg',
 		channelThumbnail: blackflag,
 		channelName: `Assassin's Creed UK`,
 		time: '03:53',
