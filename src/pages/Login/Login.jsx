@@ -24,8 +24,12 @@ const Login = () => {
 		}));
 	};
 
-	const loginHandler = () =>
-		authHandler({ authType: 'login', user, authDispatch, setUser, navigate });
+	const loginHandler = (e) => {
+		if (user.email && user.password) {
+			e.preventDefault();
+			authHandler({ authType: 'login', user, authDispatch, setUser, navigate });
+		}
+	};
 
 	return (
 		<form className={` ${styles.form}`}>
@@ -41,6 +45,7 @@ const Login = () => {
 					placeholder="johndoe@gmail.com"
 					value={user.email}
 					onChange={inputHandler}
+					required
 				/>
 			</div>
 			<div className={`input-container ${styles.passwordContainer} ${styles.inputContainer}`}>
@@ -52,6 +57,7 @@ const Login = () => {
 					placeholder="************"
 					value={user.password}
 					onChange={inputHandler}
+					required
 				/>
 				<button
 					className={styles.showPasswordBtn}
