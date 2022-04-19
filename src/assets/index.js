@@ -14,6 +14,7 @@ import MrEdxwx from './MrEdxwx.jpg';
 import xbox from './xbox.jpg';
 import ign from './ign.jpg';
 import rockstar from './rockstar.jpg';
+import empty from './empty.png';
 
 export {
 	AOE,
@@ -32,4 +33,5 @@ export {
 	xbox,
 	ign,
 	rockstar,
+	empty,
 };
