@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import styles from './VideoCard.module.css';
 
 const VideoCard = ({
@@ -11,6 +11,10 @@ const VideoCard = ({
 	videoThumbnail,
 	viewCount,
 }) => {
+	const [isVisible, setIsVisible] = useState(false);
+
+	const optionsHandler = () => setIsVisible((prev) => !prev);
+
 	return (
 		<article className={styles.card}>
 			<div className={styles.cardImg}>
@@ -18,17 +22,19 @@ const VideoCard = ({
 			</div>
 			<span className={styles.time}>{time}</span>
 			<div className={styles.content}>
-				<div className={`${styles.menu}`}>
-					<button className="btn btn-primary">
-						<i className="fa-solid fa-thumbs-up"></i> Add to Liked Videos
-					</button>
-					<button className="btn btn-primary">
-						<i className="fa-solid fa-clock"></i> Add to Watch Later
-					</button>
-					<button className="btn btn-primary">
-						<i className="fa-solid fa-list-ul"></i> Add to playlist
-					</button>
-				</div>
+				{isVisible && (
+					<div className={`${styles.menu}`}>
+						<button className="btn btn-primary">
+							<i className="fa-solid fa-thumbs-up"></i> Add to Liked Videos
+						</button>
+						<button className="btn btn-primary">
+							<i className="fa-solid fa-clock"></i> Add to Watch Later
+						</button>
+						<button className="btn btn-primary">
+							<i className="fa-solid fa-list-ul"></i> Add to playlist
+						</button>
+					</div>
+				)}
 				<img src={channelThumbnail} alt={channelName} className="avatar avatar-sm" loading="lazy" />
 				<div className={styles.videoDetails}>
 					<h4 title={title}>{title}</h4>
@@ -38,7 +44,7 @@ const VideoCard = ({
 						<span>{likes} likes</span>
 					</div>
 				</div>
-				<button className={styles.options}>
+				<button className={styles.options} onClick={optionsHandler}>
 					<i className="fa-solid fa-ellipsis-vertical"></i>
 				</button>
 			</div>
