@@ -2,3 +2,15 @@
 	display: flex;
 	width: calc(100% - 28.8rem);
 }
+
+@media only screen and (max-width: 1024px) {
+	.pgContainer {
+		flex-direction: column;
+	}
+}
+
+@media only screen and (max-width: 840px) {
+	.pgContainer {
+		width: calc(100% - 11.2rem);
+	}
+}
