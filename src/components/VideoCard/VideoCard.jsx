@@ -17,6 +17,17 @@ const VideoCard = ({
 				<img src={videoThumbnail} alt={title} className="resp-img" loading="lazy" />
 			</div>
 			<div className={styles.content}>
+				<div className={`${styles.menu}`}>
+					<button className="btn btn-primary">
+						<i className="fa-solid fa-thumbs-up"></i> Add to Liked Videos
+					</button>
+					<button className="btn btn-primary">
+						<i className="fa-solid fa-clock"></i> Add to Watch Later
+					</button>
+					<button className="btn btn-primary">
+						<i className="fa-solid fa-list-ul"></i> Add to playlist
+					</button>
+				</div>
 				<span className={styles.time}>{time}</span>
 				<img src={channelThumbnail} alt={channelName} className="avatar avatar-sm" loading="lazy" />
 				<div className={styles.videoDetails}>
