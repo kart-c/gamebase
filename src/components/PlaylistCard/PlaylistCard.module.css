@@ -1,0 +1,27 @@
+.playlist {
+	display: flex;
+	justify-content: space-between;
+	height: 6.4rem;
+	background-color: var(--bg-secondary);
+	padding: 1.6rem;
+	align-items: center;
+}
+
+.playlist h3 {
+	font-weight: 500;
+	line-height: normal;
+	width: 80%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.iconContainer {
+	width: 25%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.iconContainer i {
+	font-size: 4rem;
+}

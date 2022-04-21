@@ -1,0 +1,6 @@
+.playlistContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(24rem, 48rem));
+	grid-gap: 2.4rem;
+	width: calc(100% - 2.4rem);
+}

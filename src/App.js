@@ -1,7 +1,7 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
-import './App.css';
-import { Home, Login, Signup } from './pages';
+import { Home, Login, Signup, Liked, History, WatchLater, Playlist } from './pages';
 import { Aside, Header } from './components';
+import './App.css';
 
 function App() {
 	const location = useLocation();
@@ -15,6 +15,10 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/signup" element={<Signup />} />
+				<Route path="/liked" element={<Liked />} />
+				<Route path="/history" element={<History />} />
+				<Route path="/watchlater" element={<WatchLater />} />
+				<Route path="/playlist" element={<Playlist />} />
 			</Routes>
 		</>
 	);
