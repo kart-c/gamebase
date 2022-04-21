@@ -18,6 +18,7 @@
 	padding: 10px 8px;
 	display: flex;
 	align-items: flex-start;
+	position: relative;
 }
 
 .time {
@@ -76,4 +77,38 @@
 
 .options:active {
 	opacity: 0.7;
+}
+
+.menu {
+	background-color: var(--bg-primary);
+	padding: 8px;
+	position: absolute;
+	right: 1.6rem;
+	top: 3.2rem;
+	flex-direction: column;
+	z-index: 1;
+	display: none;
+}
+
+.menu button {
+	padding: 8px 4px;
+	background-color: inherit;
+	text-align: left;
+	color: var(--white-primary);
+}
+
+.menu button:first-of-type {
+	margin-top: 0;
+}
+
+.menu button:last-of-type {
+	margin-bottom: 0;
+}
+
+.menu button i {
+	margin-right: 4px;
+}
+
+.open {
+	display: flex;
 }
