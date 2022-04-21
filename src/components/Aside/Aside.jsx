@@ -14,25 +14,25 @@ const Aside = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to="/" title="Playlists">
+						<Link to="/playlist" title="Playlists">
 							<i className="fa-solid fa-list-ul"></i>
 							<span>Playlists</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/" title="Watch Later">
+						<Link to="/watchlater" title="Watch Later">
 							<i className="fa-solid fa-clock"></i>
 							<span>Watch Later</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/" title="Liked">
+						<Link to="/liked" title="Liked">
 							<i className="fa-solid fa-thumbs-up"></i>
 							<span>Liked</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/" title="History">
+						<Link to="/history" title="History">
 							<i className="fa-solid fa-clock-rotate-left"></i>
 							<span>History</span>
 						</Link>
