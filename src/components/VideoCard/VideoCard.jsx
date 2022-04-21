@@ -16,6 +16,7 @@ const VideoCard = ({
 			<div className={styles.cardImg}>
 				<img src={videoThumbnail} alt={title} className="resp-img" loading="lazy" />
 			</div>
+			<span className={styles.time}>{time}</span>
 			<div className={styles.content}>
 				<div className={`${styles.menu}`}>
 					<button className="btn btn-primary">
@@ -28,7 +29,6 @@ const VideoCard = ({
 						<i className="fa-solid fa-list-ul"></i> Add to playlist
 					</button>
 				</div>
-				<span className={styles.time}>{time}</span>
 				<img src={channelThumbnail} alt={channelName} className="avatar avatar-sm" loading="lazy" />
 				<div className={styles.videoDetails}>
 					<h4 title={title}>{title}</h4>
