@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useAuth } from '../../context';
+import { likesHandler } from '../../utils';
 import styles from './VideoCard.module.css';
 
 const VideoCard = ({
@@ -10,10 +12,19 @@ const VideoCard = ({
 	title,
 	videoThumbnail,
 	viewCount,
+	videos,
 }) => {
 	const [isVisible, setIsVisible] = useState(false);
+	const {
+		authState: { token },
+	} = useAuth();
 
 	const optionsHandler = () => setIsVisible((prev) => !prev);
+
+	const likeBtnHandler = (_id) => {
+		const video = videos.find((video) => video._id === _id);
+		likesHandler(token, video);
+	};
 
 	return (
 		<article className={styles.card}>
@@ -24,7 +35,7 @@ const VideoCard = ({
 			<div className={styles.content}>
 				{isVisible && (
 					<div className={`${styles.menu}`}>
-						<button className="btn btn-primary">
+						<button className="btn btn-primary" onClick={() => likeBtnHandler(_id)}>
 							<i className="fa-solid fa-thumbs-up"></i> Add to Liked Videos
 						</button>
 						<button className="btn btn-primary">
