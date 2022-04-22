@@ -1,16 +1,16 @@
 import React from 'react';
 import styles from './HorizontalCard.module.css';
 
-const HorizontalCard = () => {
+const HorizontalCard = ({ videoThumbnail, title, channelName, time }) => {
 	return (
 		<article className={styles.hrCard}>
 			<div className={styles.imgContainer}>
-				<img src="https://picsum.photos/300" alt="placeholder" className="resp-img" />
-				<span>20:05</span>
+				<img src={videoThumbnail} alt={title} className="resp-img" />
+				<span>{time}</span>
 			</div>
 			<div className={styles.content}>
-				<h4 className={styles.title}>Video Title</h4>
-				<h5>Channel name</h5>
+				<h4 className={styles.title}>{title}</h4>
+				<h5>{channelName}</h5>
 			</div>
 		</article>
 	);

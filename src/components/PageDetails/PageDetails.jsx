@@ -2,7 +2,7 @@ import React from 'react';
 import { empty } from '../../assets';
 import styles from './PageDetails.module.css';
 
-const PageDetails = ({ pg }) => {
+const PageDetails = ({ pg, length }) => {
 	return (
 		<section className={styles.pageDetails}>
 			<div className={styles.imgContainer}>
@@ -11,7 +11,7 @@ const PageDetails = ({ pg }) => {
 			</div>
 			<h3 className={styles.title}>{pg} Videos</h3>
 			<div className={styles.description}>
-				<span>No Videos</span>
+				<span>{length ? `${length} ${length === 1 ? 'Video' : 'Videos'} ` : 'No Videos'}</span>
 				<span>Last Updated on Jan 2, 2022</span>
 			</div>
 		</section>
