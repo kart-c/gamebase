@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useAuth, useLikes } from '../../context';
-import { likesHandler } from '../../utils';
-import { deleteLike } from '../../utils/delete-like';
+import { likesHandler, deleteLike } from '../../utils';
 import styles from './VideoCard.module.css';
 
 const VideoCard = ({

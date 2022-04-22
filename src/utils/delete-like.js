@@ -4,7 +4,6 @@ export const deleteLike = async ({ _id, token, likesDispatch, setBtnLoading, set
 	setBtnLoading((prev) => ({ ...prev, likes: true }));
 	try {
 		const response = await likeDeleteService(_id, token);
-		console.log(response);
 		if (response.status === 200) {
 			likesDispatch({ type: 'REMOVE_FROM_LIKES', payload: response.data.likes });
 		}
