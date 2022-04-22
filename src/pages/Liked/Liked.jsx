@@ -9,7 +9,7 @@ const Liked = () => {
 		authState: { token },
 	} = useAuth();
 	const {
-		likesState: { likes },
+		likesState: { likes, date },
 		likesDispatch,
 	} = useLikes();
 
@@ -21,7 +21,12 @@ const Liked = () => {
 
 	return (
 		<div className={`pg-defaults ${styles.pgContainer}`}>
-			<PageDetails pg={'Liked'} length={likes.length} video={likes.length ? likes[0] : null} />
+			<PageDetails
+				pg={'Liked'}
+				length={likes.length}
+				video={likes.length ? likes[0] : null}
+				date={date}
+			/>
 			<HrCardWrapper>
 				{likes.length > 0 ? (
 					likes.map((likedVideo) => (
