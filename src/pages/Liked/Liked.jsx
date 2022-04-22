@@ -17,7 +17,7 @@ const Liked = () => {
 
 	return (
 		<div className={`pg-defaults ${styles.pgContainer}`}>
-			<PageDetails pg={'Liked'} length={likes.length} />
+			<PageDetails pg={'Liked'} length={likes.length} video={likes.length ? likes[0] : null} />
 			<HrCardWrapper>
 				{likes.length > 0 ? (
 					likes.map((likedVideo) => (
