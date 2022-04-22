@@ -6,6 +6,7 @@
 	padding: 1.6rem;
 	background-color: var(--bg-secondary);
 	align-items: flex-start;
+	position: relative;
 }
 
 .imgContainer {
@@ -59,4 +60,22 @@
 
 .options:active {
 	opacity: 0.7;
+}
+
+.menu {
+	background-color: var(--bg-primary);
+	padding: 8px;
+	position: absolute;
+	display: flex;
+	right: 1.6rem;
+	top: 4rem;
+	flex-direction: column;
+	z-index: 1;
+}
+
+.menu button {
+	padding: 8px 4px;
+	background-color: inherit;
+	text-align: left;
+	color: var(--white-primary);
 }
