@@ -5,6 +5,7 @@
 	width: 100%;
 	padding: 1.6rem;
 	background-color: var(--bg-secondary);
+	align-items: flex-start;
 }
 
 .imgContainer {
@@ -43,4 +44,19 @@
 	font-size: 1.2rem;
 	font-weight: 400;
 	color: var(--lynx-grey);
+}
+
+.options {
+	background-color: inherit;
+	color: inherit;
+	font-size: var(--text-md);
+	padding: 4px;
+}
+
+.options:hover {
+	opacity: 0.9;
+}
+
+.options:active {
+	opacity: 0.7;
 }
