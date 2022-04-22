@@ -1,16 +1,29 @@
 import { useState } from 'react';
+import { useAuth, useLikes } from '../../context';
+import { deleteLike } from '../../utils';
 import styles from './HorizontalCard.module.css';
 
-const HorizontalCard = ({ videoThumbnail, title, channelName, time }) => {
+const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id }) => {
 	const [isVisible, setIsVisible] = useState(false);
+	const [btnLoading, setBtnLoading] = useState({ likes: false });
+	const {
+		authState: { token },
+	} = useAuth();
+	const { likesDispatch } = useLikes();
 
 	const optionsHandler = () => setIsVisible((prev) => !prev);
+
+	const removeFromLikes = (_id) => {
+		deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible });
+	};
 
 	return (
 		<article className={styles.hrCard}>
 			{isVisible && (
 				<div className={styles.menu}>
-					<button>Remove from likes</button>
+					<button onClick={() => removeFromLikes(_id)} disabled={btnLoading.likes}>
+						<i className="fa-solid fa-thumbs-down"></i> Remove from likes
+					</button>
 				</div>
 			)}
 			<div className={styles.imgContainer}>
