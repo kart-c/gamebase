@@ -48,6 +48,7 @@
 }
 
 .options {
+	margin-left: auto;
 	background-color: inherit;
 	color: inherit;
 	font-size: var(--text-md);
@@ -64,7 +65,6 @@
 
 .menu {
 	background-color: var(--bg-primary);
-	padding: 8px;
 	position: absolute;
 	display: flex;
 	right: 1.6rem;
@@ -74,6 +74,8 @@
 }
 
 .menu button {
+	display: block;
+	margin: 8px;
 	padding: 8px 4px;
 	background-color: inherit;
 	text-align: left;
