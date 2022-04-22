@@ -53,7 +53,7 @@ const VideoCard = ({
 							disabled={btnLoading.likes}
 						>
 							<i className="fa-solid fa-thumbs-up"></i>
-							{videoExists ? 'Remove from Liked' : 'Like Video'}
+							{videoExists ? 'Remove from Likes' : 'Like Video'}
 						</button>
 						<button className="btn btn-primary">
 							<i className="fa-solid fa-clock"></i> Add to Watch Later
