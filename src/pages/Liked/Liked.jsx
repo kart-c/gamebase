@@ -1,43 +1,35 @@
 import { useState, useEffect, Fragment } from 'react';
 import { HorizontalCard, HrCardWrapper, PageDetails } from '../../components';
-import { useAuth } from '../../context';
-import { fetchLikes } from '../../services';
+import { useAuth, useLikes } from '../../context';
+import { getLikedVideos } from '../../utils';
 import styles from './Liked.module.css';
 
 const Liked = () => {
-	const [likedVideos, setLikedVideos] = useState([]);
 	const {
 		authState: { token },
 	} = useAuth();
+	const {
+		likesState: { likes },
+		likesDispatch,
+	} = useLikes();
 
-	const getLikedVideos = async () => {
-		try {
-			const response = await fetchLikes(token);
-			console.log(response);
-			if (response.status === 200) {
-				setLikedVideos(response.data.likes);
-			}
-		} catch (error) {
-			console.error('ERROR: ', error.response);
-		}
-	};
-
-	useEffect(() => getLikedVideos(), []);
+	useEffect(() => getLikedVideos(likesDispatch, token), []);
 
 	return (
 		<div className={`pg-defaults ${styles.pgContainer}`}>
-			<PageDetails pg={'Liked'} length={likedVideos.length} />
+			<PageDetails pg={'Liked'} length={likes.length} />
 			<HrCardWrapper>
-				{likedVideos.length > 0
-					? likedVideos.map((likedVideo) => (
-							<Fragment key={likedVideo._id}>
-								<HorizontalCard {...likedVideo} />
-							</Fragment>
-					  ))
-					: 'No Videos to show'}
-				{/* <HorizontalCard />
-				<HorizontalCard />
-				<HorizontalCard /> */}
+				{likes.length > 0 ? (
+					likes.map((likedVideo) => (
+						<Fragment key={likedVideo._id}>
+							<HorizontalCard {...likedVideo} />
+						</Fragment>
+					))
+				) : (
+					<div className={styles.noVideos}>
+						<h4>You do not have any liked Videos</h4>
+					</div>
+				)}
 			</HrCardWrapper>
 		</div>
 	);
