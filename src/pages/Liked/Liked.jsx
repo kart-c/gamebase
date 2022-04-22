@@ -13,7 +13,11 @@ const Liked = () => {
 		likesDispatch,
 	} = useLikes();
 
-	useEffect(() => getLikedVideos(likesDispatch, token), []);
+	useEffect(() => {
+		if (token) {
+			getLikedVideos(likesDispatch, token);
+		}
+	}, []);
 
 	return (
 		<div className={`pg-defaults ${styles.pgContainer}`}>
