@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth, useLikes } from '../../context';
 import { likesHandler } from '../../utils';
+import { deleteLike } from '../../utils/delete-like';
 import styles from './VideoCard.module.css';
 
 const VideoCard = ({
@@ -32,6 +33,7 @@ const VideoCard = ({
 	const likeBtnHandler = (_id) => {
 		const video = videos.find((video) => video._id === _id);
 		if (videoExists) {
+			deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible });
 		} else {
 			likesHandler({ token, video, likesDispatch, setBtnLoading, setIsVisible });
 		}
