@@ -5,7 +5,10 @@ export const deleteLike = async ({ _id, token, likesDispatch, setBtnLoading, set
 	try {
 		const response = await likeDeleteService(_id, token);
 		if (response.status === 200) {
-			likesDispatch({ type: 'REMOVE_FROM_LIKES', payload: response.data.likes });
+			likesDispatch({
+				type: 'REMOVE_FROM_LIKES',
+				payload: { likes: response.data.likes, date: response.data.date },
+			});
 		}
 	} catch (error) {
 		console.error('ERROR: ', error.response);
