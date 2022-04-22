@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAuth } from '../../context';
+import { useAuth, useLikes } from '../../context';
 import { likesHandler } from '../../utils';
 import styles from './VideoCard.module.css';
 
@@ -15,15 +15,26 @@ const VideoCard = ({
 	videos,
 }) => {
 	const [isVisible, setIsVisible] = useState(false);
+	const [btnLoading, setBtnLoading] = useState({
+		likes: false,
+		watchLater: false,
+		playlist: false,
+	});
 	const {
 		authState: { token },
 	} = useAuth();
+	const { likesState, likesDispatch } = useLikes();
 
 	const optionsHandler = () => setIsVisible((prev) => !prev);
 
+	const videoExists = likesState.likes.some((video) => video._id === _id);
+
 	const likeBtnHandler = (_id) => {
 		const video = videos.find((video) => video._id === _id);
-		likesHandler(token, video);
+		if (videoExists) {
+		} else {
+			likesHandler({ token, video, likesDispatch, setBtnLoading, setIsVisible });
+		}
 	};
 
 	return (
@@ -35,8 +46,13 @@ const VideoCard = ({
 			<div className={styles.content}>
 				{isVisible && (
 					<div className={`${styles.menu}`}>
-						<button className="btn btn-primary" onClick={() => likeBtnHandler(_id)}>
-							<i className="fa-solid fa-thumbs-up"></i> Add to Liked Videos
+						<button
+							className="btn btn-primary"
+							onClick={() => likeBtnHandler(_id)}
+							disabled={btnLoading.likes}
+						>
+							<i className="fa-solid fa-thumbs-up"></i>
+							{videoExists ? 'Remove from Liked' : 'Like Video'}
 						</button>
 						<button className="btn btn-primary">
 							<i className="fa-solid fa-clock"></i> Add to Watch Later
