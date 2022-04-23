@@ -5,6 +5,8 @@
 	width: 100%;
 	padding: 1.6rem;
 	background-color: var(--bg-secondary);
+	align-items: flex-start;
+	position: relative;
 }
 
 .imgContainer {
@@ -40,8 +42,42 @@
 }
 
 .content h5 {
-	margin-top: 2.4rem;
 	font-size: 1.2rem;
 	font-weight: 400;
 	color: var(--lynx-grey);
+}
+
+.options {
+	margin-left: auto;
+	background-color: inherit;
+	color: inherit;
+	font-size: var(--text-md);
+	padding: 4px;
+}
+
+.options:hover {
+	opacity: 0.9;
+}
+
+.options:active {
+	opacity: 0.7;
+}
+
+.menu {
+	background-color: var(--bg-primary);
+	position: absolute;
+	display: flex;
+	right: 1.6rem;
+	top: 4rem;
+	flex-direction: column;
+	z-index: 1;
+}
+
+.menu button {
+	display: block;
+	margin: 8px;
+	padding: 8px 4px;
+	background-color: inherit;
+	text-align: left;
+	color: var(--white-primary);
 }

@@ -15,7 +15,7 @@ const Home = () => {
 				{videos.length > 0
 					? videos.map((video) => (
 							<li key={video._id}>
-								<VideoCard {...video} />
+								<VideoCard {...video} videos={videos} />
 							</li>
 					  ))
 					: null}

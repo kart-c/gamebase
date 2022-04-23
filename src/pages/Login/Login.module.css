@@ -117,3 +117,8 @@
 .secondaryBtn:active {
 	opacity: 0.7;
 }
+
+.guestBtn {
+	margin-bottom: 1.6rem;
+	color: var(--black);
+}

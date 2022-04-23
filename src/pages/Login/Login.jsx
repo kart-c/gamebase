@@ -31,6 +31,13 @@ const Login = () => {
 		}
 	};
 
+	const guestLoginHandler = () =>
+		setUser((prev) => ({
+			...prev,
+			email: 'adarshbalika@gmail.com',
+			password: 'adarshBalika123',
+		}));
+
 	return (
 		<form className={` ${styles.form}`}>
 			<h3>Login</h3>
@@ -78,6 +85,13 @@ const Login = () => {
 				/>
 				<label htmlFor="remember-me">Remember me</label>
 			</div>
+			<button
+				className={`btn btn-info ${styles.btn} ${styles.guestBtn}`}
+				type="button"
+				onClick={guestLoginHandler}
+			>
+				Guest Login
+			</button>
 			<button className={`${styles.btn} ${styles.primaryBtn}`} type="button" onClick={loginHandler}>
 				Login
 			</button>
