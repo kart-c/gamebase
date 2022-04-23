@@ -11,7 +11,10 @@ export const deleteWatchLater = async ({
 	try {
 		const response = await watchLaterDelete(_id, token);
 		if (response.status === 200) {
-			watchLaterDispatch({ type: 'REMOVE_FROM_WATCHLATER', payload: response.data.watchlater });
+			watchLaterDispatch({
+				type: 'REMOVE_FROM_WATCHLATER',
+				payload: { watchlater: response.data.watchlater, date: response.data.date },
+			});
 		}
 	} catch (error) {
 		console.error('ERROR: ', error.response.data);

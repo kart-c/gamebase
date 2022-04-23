@@ -9,7 +9,7 @@ const WatchLater = () => {
 		authState: { token },
 	} = useAuth();
 	const {
-		watchLaterState: { watchlater },
+		watchLaterState: { watchlater, date },
 		watchLaterDispatch,
 	} = useWatchLater();
 
@@ -25,6 +25,7 @@ const WatchLater = () => {
 				pg={'WatchLater'}
 				length={watchlater.length}
 				video={watchlater.length ? watchlater[0] : null}
+				date={date}
 			/>
 			<HrCardWrapper>
 				{watchlater.length > 0 ? (
