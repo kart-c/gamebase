@@ -6,6 +6,9 @@ export const watchLaterReducer = (state, { type, payload }) => {
 		case 'REMOVE_FROM_WATCHLATER':
 			return { ...state, watchlater: payload };
 
+		case 'GET_WATCHLATER':
+			return { ...state, watchlater: payload };
+
 		default:
 			throw new Error('NO CASE DEFINED IN WATCH LATER REDUCER');
 	}
