@@ -52,7 +52,7 @@ const VideoCard = ({
 							onClick={() => likeBtnHandler(_id)}
 							disabled={btnLoading.likes}
 						>
-							<i className="fa-solid fa-thumbs-up"></i>
+							<i className={videoExists ? 'fa-solid fa-thumbs-down' : 'fa-solid fa-thumbs-up'}></i>
 							{videoExists ? 'Remove from Likes' : 'Like Video'}
 						</button>
 						<button className="btn btn-primary">
