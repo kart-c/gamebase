@@ -32,7 +32,7 @@
 	font-size: 1.4rem;
 }
 
-.description span:first-of-type::after {
+.date:last-of-type::before {
 	content: '';
 	display: inline-block;
 	height: 6px;
