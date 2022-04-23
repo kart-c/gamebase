@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth, useLikes, useWatchLater } from '../../context';
-import { likesHandler, deleteLike, addToWatchLater } from '../../utils';
+import { likesHandler, deleteLike, addToWatchLater, deleteWatchLater } from '../../utils';
 import styles from './VideoCard.module.css';
 
 const VideoCard = ({
@@ -46,6 +46,7 @@ const VideoCard = ({
 
 	const watchLaterHandler = (_id) => {
 		if (watchlaterExists) {
+			deleteWatchLater({ _id, token, watchLaterDispatch, setBtnLoading, setIsVisible });
 		} else {
 			const video = videos.find((video) => video._id === _id);
 			addToWatchLater({ token, video, watchLaterDispatch, setBtnLoading, setIsVisible });
