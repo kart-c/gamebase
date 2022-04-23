@@ -18,7 +18,7 @@ const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id }) => {
 	const optionsHandler = () => setIsVisible((prev) => !prev);
 
 	const removeHandler = (_id) => {
-		pathname === 'likes'
+		pathname === 'liked'
 			? deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible })
 			: deleteWatchLater({ _id, token, watchLaterDispatch, setBtnLoading, setIsVisible });
 	};
@@ -28,8 +28,8 @@ const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id }) => {
 			{isVisible && (
 				<div className={styles.menu}>
 					<button onClick={() => removeHandler(_id)} disabled={btnLoading.likes}>
-						{pathname === 'likes' && <i className="fa-solid fa-thumbs-down"></i>}
-						{pathname === 'likes' ? 'Remove from likes' : 'Remove from watch later'}
+						{pathname === 'liked' && <i className="fa-solid fa-thumbs-down"></i>}
+						{pathname === 'liked' ? 'Remove from likes' : 'Remove from watch later'}
 					</button>
 				</div>
 			)}
