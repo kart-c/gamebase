@@ -6,7 +6,9 @@ export const newPlaylistHandler = async ({
 	setNewPlaylist,
 	setPlaylist,
 	playlistsDispatch,
+	setIsLoading,
 }) => {
+	setIsLoading(true);
 	try {
 		const response = await newPlaylistService(token, playlist);
 		if (response.status === 201) {
@@ -17,5 +19,6 @@ export const newPlaylistHandler = async ({
 	} catch (error) {
 		console.error('ERROR: ', error.response);
 	} finally {
+		setIsLoading(false);
 	}
 };

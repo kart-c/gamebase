@@ -5,6 +5,7 @@ import styles from './PlaylistModal.module.css';
 
 const PlaylistModal = ({ setIsActive }) => {
 	const [newPlaylist, setNewPlaylist] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const [playlist, setPlaylist] = useState({
 		title: '',
 		description: '',
@@ -30,11 +31,16 @@ const PlaylistModal = ({ setIsActive }) => {
 
 	const newBtnHandler = () => {
 		if (playlist.title) {
-			newPlaylistHandler({ token, playlist, setPlaylist, setNewPlaylist, playlistsDispatch });
+			newPlaylistHandler({
+				token,
+				playlist,
+				setPlaylist,
+				setNewPlaylist,
+				playlistsDispatch,
+				setIsLoading,
+			});
 		}
 	};
-
-	console.log(playlists);
 
 	return (
 		<>
@@ -80,7 +86,7 @@ const PlaylistModal = ({ setIsActive }) => {
 							onChange={inputHandler}
 						/>
 						<div className={styles.btnContainer}>
-							<button className="btn btn-primary" onClick={newBtnHandler}>
+							<button className="btn btn-primary" onClick={newBtnHandler} disabled={isLoading}>
 								Add
 							</button>
 							<button className={`btn btn-primary ${styles.cancelBtn}`} onClick={cancelBtnHandler}>
