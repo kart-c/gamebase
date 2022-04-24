@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useAuth, useLikes } from '../../context';
-import { likesHandler, deleteLike } from '../../utils';
+import { useAuth, useLikes, useWatchLater } from '../../context';
+import { likesHandler, deleteLike, addToWatchLater, deleteWatchLater } from '../../utils';
 import styles from './VideoCard.module.css';
 
 const VideoCard = ({
@@ -24,6 +24,10 @@ const VideoCard = ({
 		authState: { token },
 	} = useAuth();
 	const { likesState, likesDispatch } = useLikes();
+	const {
+		watchLaterState: { watchlater },
+		watchLaterDispatch,
+	} = useWatchLater();
 
 	const optionsHandler = () => setIsVisible((prev) => !prev);
 
@@ -35,6 +39,17 @@ const VideoCard = ({
 			deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible });
 		} else {
 			likesHandler({ token, video, likesDispatch, setBtnLoading, setIsVisible });
+		}
+	};
+
+	const watchlaterExists = watchlater.some((video) => video._id === _id);
+
+	const watchLaterHandler = (_id) => {
+		if (watchlaterExists) {
+			deleteWatchLater({ _id, token, watchLaterDispatch, setBtnLoading, setIsVisible });
+		} else {
+			const video = videos.find((video) => video._id === _id);
+			addToWatchLater({ token, video, watchLaterDispatch, setBtnLoading, setIsVisible });
 		}
 	};
 
@@ -52,11 +67,16 @@ const VideoCard = ({
 							onClick={() => likeBtnHandler(_id)}
 							disabled={btnLoading.likes}
 						>
-							<i className="fa-solid fa-thumbs-up"></i>
+							<i className={videoExists ? 'fa-solid fa-thumbs-down' : 'fa-solid fa-thumbs-up'}></i>
 							{videoExists ? 'Remove from Likes' : 'Like Video'}
 						</button>
-						<button className="btn btn-primary">
-							<i className="fa-solid fa-clock"></i> Add to Watch Later
+						<button
+							className="btn btn-primary"
+							onClick={() => watchLaterHandler(_id)}
+							disabled={btnLoading.watchLater}
+						>
+							<i className="fa-solid fa-clock"></i>{' '}
+							{watchlaterExists ? 'Remove from Watch Later' : 'Add to Watch Later'}
 						</button>
 						<button className="btn btn-primary">
 							<i className="fa-solid fa-list-ul"></i> Add to playlist

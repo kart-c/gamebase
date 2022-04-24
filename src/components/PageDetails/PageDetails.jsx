@@ -14,7 +14,7 @@ const PageDetails = ({ pg, length, video, date }) => {
 			<h3 className={styles.title}>{pg} Videos</h3>
 			<div className={styles.description}>
 				<span>{length ? `${length} ${length === 1 ? 'Video' : 'Videos'} ` : 'No Videos'}</span>
-				{date && <span>Last Updated on {formattedDate(date)}</span>}
+				{date && <span className={styles.date}>Last Updated on {formattedDate(date)}</span>}
 			</div>
 		</section>
 	);

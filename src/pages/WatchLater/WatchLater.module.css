@@ -3,9 +3,17 @@
 	width: calc(100% - 28.8rem);
 }
 
+.noVideos {
+	margin-left: 2.4rem;
+}
+
 @media only screen and (max-width: 1024px) {
 	.pgContainer {
 		flex-direction: column;
+	}
+
+	.noVideos {
+		margin: 2.4rem 0;
 	}
 }
 
