@@ -5,3 +5,4 @@ export { getLikedVideos } from './get-liked';
 export { addToWatchLater } from './add-to-wl-handler';
 export { deleteWatchLater } from './wl-delete-handler';
 export { getWatchLater } from './get-watch-later';
+export { newPlaylistHandler } from './new-playlist-handler';
