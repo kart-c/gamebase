@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth, useLikes, useWatchLater } from '../../context';
 import { likesHandler, deleteLike, addToWatchLater, deleteWatchLater } from '../../utils';
+import { PlaylistModal } from '../PlaylistModal/PlaylistModal';
 import styles from './VideoCard.module.css';
 
 const VideoCard = ({
@@ -13,9 +14,10 @@ const VideoCard = ({
 	videoThumbnail,
 	viewCount,
 	videos,
-	playlistHandler,
 }) => {
 	const [isVisible, setIsVisible] = useState(false);
+	const [modalActive, setModalActive] = useState(false);
+	const [playlistVideo, setPlaylistVideo] = useState(null);
 	const [btnLoading, setBtnLoading] = useState({
 		likes: false,
 		watchLater: false,
@@ -54,8 +56,18 @@ const VideoCard = ({
 		}
 	};
 
+	const playlistHandler = (_id) => {
+		setIsVisible(false);
+		setModalActive(true);
+		const video = videos.find((video) => video._id === _id);
+		setPlaylistVideo(video);
+	};
+
 	return (
 		<article className={styles.card}>
+			{modalActive && (
+				<PlaylistModal setModalActive={setModalActive} playlistVideo={playlistVideo} />
+			)}
 			<div className={styles.cardImg}>
 				<img src={videoThumbnail} alt={title} className="resp-img" loading="lazy" />
 			</div>

@@ -3,7 +3,7 @@ import { useAuth, usePlaylists } from '../../context';
 import { newPlaylistHandler } from '../../utils';
 import styles from './PlaylistModal.module.css';
 
-const PlaylistModal = ({ setIsActive }) => {
+const PlaylistModal = ({ setModalActive }) => {
 	const [newPlaylist, setNewPlaylist] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [playlist, setPlaylist] = useState({
@@ -44,7 +44,7 @@ const PlaylistModal = ({ setIsActive }) => {
 
 	return (
 		<>
-			<div className={styles.backdrop} onClick={() => setIsActive((prev) => !prev)}></div>
+			<div className={styles.backdrop} onClick={() => setModalActive((prev) => !prev)}></div>
 			<div className={styles.modal}>
 				<h3>Playlist</h3>
 
