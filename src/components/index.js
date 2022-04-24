@@ -6,3 +6,4 @@ export { PageDetails } from './PageDetails/PageDetails';
 export { HorizontalCard } from './HorizontalCard/HorizontalCard';
 export { HrCardWrapper } from './HrCardWrapper/HrCardWrapper';
 export { PlaylistCard } from './PlaylistCard/PlaylistCard';
+export { PlaylistModal } from './PlaylistModal/PlaylistModal';
