@@ -13,6 +13,7 @@ const VideoCard = ({
 	videoThumbnail,
 	viewCount,
 	videos,
+	playlistHandler,
 }) => {
 	const [isVisible, setIsVisible] = useState(false);
 	const [btnLoading, setBtnLoading] = useState({
@@ -78,7 +79,7 @@ const VideoCard = ({
 							<i className="fa-solid fa-clock"></i>{' '}
 							{watchlaterExists ? 'Remove from Watch Later' : 'Add to Watch Later'}
 						</button>
-						<button className="btn btn-primary">
+						<button className="btn btn-primary" onClick={() => playlistHandler(_id)}>
 							<i className="fa-solid fa-list-ul"></i> Add to playlist
 						</button>
 					</div>
