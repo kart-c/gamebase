@@ -5,10 +5,13 @@ export const playlistsReducer = (state, { type, payload }) => {
 
 		case 'ADD_NEW_VIDEO':
 			const newPlaylists = (playlists) =>
-				playlists.map((playlist) =>
-					playlist._id === payload._id ? { ...playlist, videos: payload.videos } : playlist
-				);
+				playlists.map((playlist) => (playlist._id === payload._id ? payload : playlist));
 			return { ...state, playlists: newPlaylists(state.playlists) };
+
+		case 'DELETE_FROM_PLAYLIST':
+			const filterPlaylists = (playlists) =>
+				playlists.map((playlist) => (playlist._id === payload._id ? payload : playlist));
+			return { ...state, playlists: filterPlaylists(state.playlists) };
 
 		default:
 			throw new Error('NO CASE DEFINED IN PLAYLISTS REDUCER');
