@@ -9,3 +9,4 @@ export { fetchWatchLater } from './fetch-watch-later.service';
 export { newPlaylistService } from './new-playlist.service';
 export { addToPlaylistService } from './add-to-playlist.service';
 export { deletePlaylistVideo } from './delete-playlist-video.service';
+export { getPlaylistService } from './get-playlist.service';
