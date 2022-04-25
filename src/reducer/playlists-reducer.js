@@ -3,6 +3,9 @@ export const playlistsReducer = (state, { type, payload }) => {
 		case 'ADD_NEW_PLAYLIST':
 			return { ...state, playlists: payload };
 
+		case 'GET_PLAYLISTS':
+			return { ...state, playlists: payload };
+
 		case 'ADD_NEW_VIDEO':
 			const newPlaylists = (playlists) =>
 				playlists.map((playlist) => (playlist._id === payload._id ? payload : playlist));
