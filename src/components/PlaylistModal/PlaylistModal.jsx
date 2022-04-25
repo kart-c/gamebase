@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useAuth, usePlaylists } from '../../context';
-import { newPlaylistHandler } from '../../utils';
+import { addToPlaylist, newPlaylistHandler } from '../../utils';
 import styles from './PlaylistModal.module.css';
 
-const PlaylistModal = ({ setModalActive }) => {
+const PlaylistModal = ({ setModalActive, playlistVideo }) => {
 	const [newPlaylist, setNewPlaylist] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const [checkboxLoader, setCheckboxLoader] = useState(false);
 	const [playlist, setPlaylist] = useState({
 		title: '',
 		description: '',
@@ -42,6 +43,21 @@ const PlaylistModal = ({ setModalActive }) => {
 		}
 	};
 
+	console.log(playlists);
+
+	const isVideoPresent = (_id) => {
+		const currentPlaylist = playlists.find((playlist) => playlist._id === _id);
+		const isVideoPresent = currentPlaylist.videos.some((video) => video._id === playlistVideo._id);
+		return isVideoPresent;
+	};
+
+	const newPlaylistVideo = (_id) => {
+		if (isVideoPresent(_id)) {
+		} else {
+			addToPlaylist({ token, _id, video: playlistVideo, playlistsDispatch, setCheckboxLoader });
+		}
+	};
+
 	return (
 		<>
 			<div className={styles.backdrop} onClick={() => setModalActive((prev) => !prev)}></div>
@@ -54,7 +70,14 @@ const PlaylistModal = ({ setModalActive }) => {
 							<ul className={styles.playlistContainer}>
 								{playlists.map((playlist) => (
 									<li className="checkbox-container" key={playlist._id}>
-										<input type="checkbox" name={playlist.name} id={playlist._id} />
+										<input
+											type="checkbox"
+											name={playlist.name}
+											id={playlist._id}
+											checked={isVideoPresent(playlist._id)}
+											onChange={() => newPlaylistVideo(playlist._id)}
+											disabled={checkboxLoader}
+										/>
 										<label htmlFor={playlist._id}>{playlist.title}</label>
 									</li>
 								))}
