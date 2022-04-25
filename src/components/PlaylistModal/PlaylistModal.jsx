@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth, usePlaylists } from '../../context';
-import { addToPlaylist, newPlaylistHandler } from '../../utils';
+import { addToPlaylist, newPlaylistHandler, removeFromPlaylist } from '../../utils';
 import styles from './PlaylistModal.module.css';
 
 const PlaylistModal = ({ setModalActive, playlistVideo }) => {
@@ -43,8 +43,6 @@ const PlaylistModal = ({ setModalActive, playlistVideo }) => {
 		}
 	};
 
-	console.log(playlists);
-
 	const isVideoPresent = (_id) => {
 		const currentPlaylist = playlists.find((playlist) => playlist._id === _id);
 		const isVideoPresent = currentPlaylist.videos.some((video) => video._id === playlistVideo._id);
@@ -53,8 +51,21 @@ const PlaylistModal = ({ setModalActive, playlistVideo }) => {
 
 	const newPlaylistVideo = (_id) => {
 		if (isVideoPresent(_id)) {
+			removeFromPlaylist({
+				token,
+				playlist_id: _id,
+				videoId: playlistVideo._id,
+				playlistsDispatch,
+				setCheckboxLoader,
+			});
 		} else {
-			addToPlaylist({ token, _id, video: playlistVideo, playlistsDispatch, setCheckboxLoader });
+			addToPlaylist({
+				token,
+				_id,
+				video: playlistVideo,
+				playlistsDispatch,
+				setCheckboxLoader,
+			});
 		}
 	};
 
