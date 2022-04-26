@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { empty } from '../../assets';
 import { useAuth, usePlaylists } from '../../context';
 import { deletePlaylist } from '../../utils';
@@ -10,6 +11,7 @@ const PlaylistCard = ({ title, playlistImg, description, videos, _id }) => {
 		authState: { token },
 	} = useAuth();
 	const { playlistsDispatch } = usePlaylists();
+	const navigate = useNavigate();
 
 	const names = videos.reduce(
 		(acc, curr) => (videos.length === 1 ? acc + curr.title : (acc += curr.title + ', ')),
@@ -27,8 +29,12 @@ const PlaylistCard = ({ title, playlistImg, description, videos, _id }) => {
 		deletePlaylist({ _id, token, playlistsDispatch, setBtnLoader });
 	};
 
+	const playlistHandler = () => {
+		navigate(`/playlist/${_id}`);
+	};
+
 	return (
-		<article className={styles.playlist} disabled={btnLoader}>
+		<article className={styles.playlist} disabled={btnLoader} onClick={playlistHandler}>
 			<div className={styles.playlistDescription}>
 				<h3>{title}</h3>
 				<p>{text}</p>
