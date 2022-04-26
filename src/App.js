@@ -1,5 +1,5 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
-import { Home, Login, Signup, Liked, History, WatchLater, Playlist } from './pages';
+import { Home, Login, Signup, Liked, History, WatchLater, Playlist, SinglePlaylist } from './pages';
 import { Aside, Header } from './components';
 import './App.css';
 
@@ -19,6 +19,7 @@ function App() {
 				<Route path="/history" element={<History />} />
 				<Route path="/watchlater" element={<WatchLater />} />
 				<Route path="/playlist" element={<Playlist />} />
+				<Route path="/playlist/:_id" element={<SinglePlaylist />} />
 			</Routes>
 		</>
 	);
