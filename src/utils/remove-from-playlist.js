@@ -11,7 +11,10 @@ export const removeFromPlaylist = async ({
 	try {
 		const response = await deletePlaylistVideo(playlist_id, token, videoId);
 		if (response.status === 200) {
-			playlistsDispatch({ type: 'DELETE_FROM_PLAYLIST', payload: response.data.playlist });
+			playlistsDispatch({
+				type: 'DELETE_FROM_PLAYLIST',
+				payload: { playlist: response.data.playlist, date: response.data.date },
+			});
 		}
 	} catch (error) {
 		console.error('ERROR: ', error.response);
