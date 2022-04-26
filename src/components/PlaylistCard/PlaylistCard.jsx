@@ -20,7 +20,9 @@ const PlaylistCard = ({ title, playlistImg, description, videos }) => {
 			</div>
 			<div className={styles.imageContainer}>
 				<img src={playlistImg ?? empty} alt={title} className="resp-img" />
-				<i className="fa-solid fa-list-check"></i>
+				<button>
+					<i className="fa-solid fa-trash-can"></i>
+				</button>
 			</div>
 		</article>
 	);

@@ -39,6 +39,7 @@
 	height: 100%;
 }
 .imageContainer i {
+	color: var(--white-primary);
 	font-size: 3.2rem;
 	position: absolute;
 	top: 50%;
