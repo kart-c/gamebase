@@ -7,7 +7,10 @@ const PlaylistsContext = createContext({
 });
 
 const PlaylistsProvider = ({ children }) => {
-	const [playlistsState, playlistsDispatch] = useReducer(playlistsReducer, { playlists: [] });
+	const [playlistsState, playlistsDispatch] = useReducer(playlistsReducer, {
+		playlists: [],
+		date: null,
+	});
 
 	return (
 		<PlaylistsContext.Provider value={{ playlistsState, playlistsDispatch }}>
