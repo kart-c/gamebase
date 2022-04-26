@@ -9,10 +9,8 @@ const SinglePlaylist = () => {
 	const {
 		playlistsState: { playlists, date },
 	} = usePlaylists();
-	console.log(params);
 
 	const currentPlaylist = playlists.find((playlist) => playlist._id === params._id);
-	console.log(currentPlaylist);
 
 	return (
 		<div className={`pg-defaults ${styles.pgContainer}`}>
@@ -26,7 +24,7 @@ const SinglePlaylist = () => {
 				{currentPlaylist.videos.length > 0 ? (
 					currentPlaylist.videos.map((video) => (
 						<Fragment key={video._id}>
-							<HorizontalCard {...video} />
+							<HorizontalCard {...video} playlist_id={currentPlaylist._id} />
 						</Fragment>
 					))
 				) : (

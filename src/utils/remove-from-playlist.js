@@ -7,7 +7,7 @@ export const removeFromPlaylist = async ({
 	setCheckboxLoader,
 	playlistsDispatch,
 }) => {
-	setCheckboxLoader(true);
+	setCheckboxLoader && setCheckboxLoader(true);
 	try {
 		const response = await deletePlaylistVideo(playlist_id, token, videoId);
 		if (response.status === 200) {
@@ -19,6 +19,6 @@ export const removeFromPlaylist = async ({
 	} catch (error) {
 		console.error('ERROR: ', error.response);
 	} finally {
-		setCheckboxLoader(false);
+		setCheckboxLoader && setCheckboxLoader(false);
 	}
 };
