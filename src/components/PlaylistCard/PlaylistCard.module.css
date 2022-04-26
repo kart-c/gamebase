@@ -1,27 +1,46 @@
 .playlist {
 	display: flex;
 	justify-content: space-between;
-	height: 6.4rem;
+	height: 12rem;
 	background-color: var(--bg-secondary);
-	padding: 1.6rem;
+	padding: 1.2rem;
 	align-items: center;
 }
 
-.playlist h3 {
+.playlistDescription h3 {
 	font-weight: 500;
 	line-height: normal;
 	width: 80%;
 	text-overflow: ellipsis;
 	overflow: hidden;
+	white-space: nowrap;
+	margin-bottom: 1.6rem;
 }
 
-.iconContainer {
+.playlistDescription p {
+	width: 27ch;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+
+.imageContainer {
 	width: 25%;
+	height: 100%;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	position: relative;
 }
-
-.iconContainer i {
-	font-size: 4rem;
+.imageContainer img {
+	opacity: 0.7;
+	height: 100%;
+}
+.imageContainer i {
+	font-size: 3.2rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
