@@ -7,7 +7,7 @@ import styles from './SinglePlaylist.module.css';
 const SinglePlaylist = () => {
 	const params = useParams();
 	const {
-		playlistsState: { playlists },
+		playlistsState: { playlists, date },
 	} = usePlaylists();
 	console.log(params);
 
@@ -20,7 +20,7 @@ const SinglePlaylist = () => {
 				pg={currentPlaylist.title}
 				length={currentPlaylist.videos.length}
 				video={currentPlaylist.videos.length ? currentPlaylist.videos[0] : null}
-				// date={date}
+				date={date}
 			/>
 			<HrCardWrapper>
 				{currentPlaylist.videos.length > 0 ? (

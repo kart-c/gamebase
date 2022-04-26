@@ -11,13 +11,17 @@ export const playlistsReducer = (state, { type, payload }) => {
 
 		case 'ADD_NEW_VIDEO':
 			const newPlaylists = (playlists) =>
-				playlists.map((playlist) => (playlist._id === payload._id ? payload : playlist));
-			return { ...state, playlists: newPlaylists(state.playlists) };
+				playlists.map((playlist) =>
+					playlist._id === payload.playlist._id ? payload.playlist : playlist
+				);
+			return { ...state, playlists: newPlaylists(state.playlists), date: payload.date };
 
 		case 'DELETE_FROM_PLAYLIST':
 			const filterPlaylists = (playlists) =>
-				playlists.map((playlist) => (playlist._id === payload._id ? payload : playlist));
-			return { ...state, playlists: filterPlaylists(state.playlists) };
+				playlists.map((playlist) =>
+					playlist._id === payload.playlist._id ? payload.playlist : playlist
+				);
+			return { ...state, playlists: filterPlaylists(state.playlists), date: payload.date };
 
 		default:
 			throw new Error('NO CASE DEFINED IN PLAYLISTS REDUCER');
