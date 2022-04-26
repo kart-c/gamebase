@@ -10,3 +10,4 @@ export { newPlaylistService } from './new-playlist.service';
 export { addToPlaylistService } from './add-to-playlist.service';
 export { deletePlaylistVideo } from './delete-playlist-video.service';
 export { getPlaylistService } from './get-playlist.service';
+export { deletePlaylistService } from './delete-playlist.service';
