@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth, useLikes, useWatchLater } from '../../context';
 import { likesHandler, deleteLike, addToWatchLater, deleteWatchLater } from '../../utils';
+import { PlaylistModal } from '../PlaylistModal/PlaylistModal';
 import styles from './VideoCard.module.css';
 
 const VideoCard = ({
@@ -15,6 +16,8 @@ const VideoCard = ({
 	videos,
 }) => {
 	const [isVisible, setIsVisible] = useState(false);
+	const [modalActive, setModalActive] = useState(false);
+	const [playlistVideo, setPlaylistVideo] = useState(null);
 	const [btnLoading, setBtnLoading] = useState({
 		likes: false,
 		watchLater: false,
@@ -53,8 +56,18 @@ const VideoCard = ({
 		}
 	};
 
+	const playlistHandler = (_id) => {
+		setIsVisible(false);
+		setModalActive(true);
+		const video = videos.find((video) => video._id === _id);
+		setPlaylistVideo(video);
+	};
+
 	return (
 		<article className={styles.card}>
+			{modalActive && (
+				<PlaylistModal setModalActive={setModalActive} playlistVideo={playlistVideo} />
+			)}
 			<div className={styles.cardImg}>
 				<img src={videoThumbnail} alt={title} className="resp-img" loading="lazy" />
 			</div>
@@ -78,7 +91,7 @@ const VideoCard = ({
 							<i className="fa-solid fa-clock"></i>{' '}
 							{watchlaterExists ? 'Remove from Watch Later' : 'Add to Watch Later'}
 						</button>
-						<button className="btn btn-primary">
+						<button className="btn btn-primary" onClick={() => playlistHandler(_id)}>
 							<i className="fa-solid fa-list-ul"></i> Add to playlist
 						</button>
 					</div>

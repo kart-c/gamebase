@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useAuth, useLikes, useWatchLater } from '../../context';
-import { deleteLike, deleteWatchLater } from '../../utils';
+import { useAuth, useLikes, usePlaylists, useWatchLater } from '../../context';
+import { deleteLike, deleteWatchLater, removeFromPlaylist } from '../../utils';
 import styles from './HorizontalCard.module.css';
 
-const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id }) => {
+const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id, playlist_id }) => {
 	const [isVisible, setIsVisible] = useState(false);
 	const [btnLoading, setBtnLoading] = useState({ likes: false, watchLater: false });
 	const {
 		authState: { token },
 	} = useAuth();
+	const { playlistsDispatch } = usePlaylists();
 	const { likesDispatch } = useLikes();
 	const { watchLaterDispatch } = useWatchLater();
 	let { pathname } = useLocation();
@@ -17,10 +18,32 @@ const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id }) => {
 
 	const optionsHandler = () => setIsVisible((prev) => !prev);
 
+	const getName = (pathname) => {
+		switch (pathname) {
+			case 'liked':
+				return 'Remove from likes';
+
+			case 'watchlater':
+				return 'Remove from watch later';
+
+			default:
+				return 'Remove from playlist';
+		}
+	};
+
 	const removeHandler = (_id) => {
-		pathname === 'liked'
-			? deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible })
-			: deleteWatchLater({ _id, token, watchLaterDispatch, setBtnLoading, setIsVisible });
+		switch (pathname) {
+			case 'liked':
+				deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible });
+				break;
+
+			case 'watchlater':
+				deleteWatchLater({ _id, token, watchLaterDispatch, setBtnLoading, setIsVisible });
+				break;
+
+			default:
+				removeFromPlaylist({ videoId: _id, token, playlistsDispatch, playlist_id });
+		}
 	};
 
 	return (
@@ -29,7 +52,7 @@ const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id }) => {
 				<div className={styles.menu}>
 					<button onClick={() => removeHandler(_id)} disabled={btnLoading.likes}>
 						{pathname === 'liked' && <i className="fa-solid fa-thumbs-down"></i>}
-						{pathname === 'liked' ? 'Remove from likes' : 'Remove from watch later'}
+						{getName(pathname)}
 					</button>
 				</div>
 			)}

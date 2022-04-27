@@ -1,12 +1,49 @@
-import React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { empty } from '../../assets';
+import { useAuth, usePlaylists } from '../../context';
+import { deletePlaylist } from '../../utils';
 import styles from './PlaylistCard.module.css';
 
-const PlaylistCard = () => {
+const PlaylistCard = ({ title, playlistImg, description, videos, _id }) => {
+	const [btnLoader, setBtnLoader] = useState(false);
+	const {
+		authState: { token },
+	} = useAuth();
+	const { playlistsDispatch } = usePlaylists();
+	const navigate = useNavigate();
+
+	const names = videos.reduce(
+		(acc, curr) => (videos.length === 1 ? acc + curr.title : (acc += curr.title + ', ')),
+		''
+	);
+
+	const text = description
+		? description
+		: videos.length > 0
+		? `This playlist includes ${names}`
+		: 'Empty Playlist';
+
+	const deleteBtnHandler = (e) => {
+		e.stopPropagation();
+		deletePlaylist({ _id, token, playlistsDispatch, setBtnLoader });
+	};
+
+	const playlistHandler = () => {
+		navigate(`/playlist/${_id}`);
+	};
+
 	return (
-		<article className={styles.playlist}>
-			<h3>Playlist name</h3>
-			<div className={styles.iconContainer}>
-				<i className="fa-solid fa-list-check"></i>
+		<article className={styles.playlist} disabled={btnLoader} onClick={playlistHandler}>
+			<div className={styles.playlistDescription}>
+				<h3>{title}</h3>
+				<p>{text}</p>
+			</div>
+			<div className={styles.imageContainer}>
+				<img src={playlistImg ?? empty} alt={title} className="resp-img" />
+				<button onClick={deleteBtnHandler} disabled={btnLoader}>
+					<i className="fa-solid fa-trash-can" disabled={btnLoader}></i>
+				</button>
 			</div>
 		</article>
 	);

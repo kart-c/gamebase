@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useEffect, Fragment } from 'react';
 import { HorizontalCard, HrCardWrapper, PageDetails } from '../../components';
 import { useAuth, useLikes } from '../../context';
 import { getLikedVideos } from '../../utils';

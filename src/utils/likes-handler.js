@@ -11,7 +11,6 @@ export const likesHandler = async ({
 	try {
 		const response = await likeService(token, video);
 		if (response.status === 201) {
-			console.log(response);
 			likesDispatch({
 				type: 'ADD_TO_LIKES',
 				payload: { likes: response.data.likes, date: response.data.date },
