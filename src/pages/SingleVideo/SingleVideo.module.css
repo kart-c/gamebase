@@ -1,17 +1,15 @@
 .pg {
 	margin: 9.6rem 2.4rem 3.2rem;
-	display: flex;
 }
 
 .videoWrapper {
 	width: 100%;
 	max-width: 80rem;
-	height: 40rem;
 }
 
-.detailContainer h4 {
+.detailContainer > h4 {
 	margin: 2.4rem 0 1.6rem;
-	font-weight: 400;
+	font-weight: 500;
 }
 
 .videoDetails {
@@ -21,7 +19,7 @@
 	font-size: 1.2rem;
 	color: var(--lynx-grey);
 	padding-bottom: 1.2rem;
-	border-bottom: 1px solid var(--lynx-grey);
+	border-bottom: 1px solid var(--btn-secondary);
 }
 
 .btnContainer button {
@@ -37,4 +35,38 @@
 
 .btnContainer i {
 	margin-left: 10px;
+}
+
+.channelDetailContainer {
+	margin-top: 1.2rem;
+	padding-bottom: 1.2rem;
+	border-bottom: 1px solid var(--btn-secondary);
+	display: flex;
+}
+
+.channelDetailContainer img {
+	height: 4.8rem;
+	width: 4.8rem;
+}
+
+.channelDetails {
+	margin-left: 1.2rem;
+}
+
+.channelDetails > h4 {
+	margin-top: 10px;
+	font-weight: 400;
+}
+
+.description {
+	margin-top: 1.6rem;
+	font-size: 1.4rem;
+	width: 50ch;
+}
+
+.description > button {
+	background-color: transparent;
+	color: var(--info-color);
+	text-decoration: underline;
+	margin-left: 4px;
 }
