@@ -10,3 +10,4 @@ export { addToPlaylist } from './add-to-playlist';
 export { removeFromPlaylist } from './remove-from-playlist';
 export { getPlaylist } from './get-playlist';
 export { deletePlaylist } from './delete-playlist-handler';
+export { getVideo } from './get-video-handler';
