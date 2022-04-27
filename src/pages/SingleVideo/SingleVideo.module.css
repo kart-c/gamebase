@@ -80,6 +80,10 @@
 	padding: 0 4px;
 }
 
+.btnContainer .btnActive {
+	color: var(--white-primary);
+}
+
 @media only screen and (max-width: 768px) {
 	.options {
 		display: block;
