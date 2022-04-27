@@ -19,7 +19,11 @@ function App() {
 	return (
 		<>
 			<Header />
-			{location.pathname !== '/login' && location.pathname !== '/signup' ? <Aside /> : null}
+			{location.pathname !== '/login' &&
+			location.pathname !== '/signup' &&
+			!location.pathname.includes('/explore/') ? (
+				<Aside />
+			) : null}
 
 			<Routes>
 				<Route path="/" element={<Home />} />
@@ -30,7 +34,7 @@ function App() {
 				<Route path="/watchlater" element={<WatchLater />} />
 				<Route path="/playlist" element={<Playlist />} />
 				<Route path="/playlist/:_id" element={<SinglePlaylist />} />
-				<Route path="/:_id" element={<SingleVideo />} />
+				<Route path="/explore/:_id" element={<SingleVideo />} />
 			</Routes>
 		</>
 	);
