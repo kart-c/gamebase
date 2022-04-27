@@ -69,9 +69,14 @@ const PlaylistModal = ({ setModalActive, playlistVideo }) => {
 		}
 	};
 
+	const backdropHandler = (e) => {
+		e.stopPropagation();
+		setModalActive((prev) => !prev);
+	};
+
 	return (
 		<>
-			<div className={styles.backdrop} onClick={() => setModalActive((prev) => !prev)}></div>
+			<div className={styles.backdrop} onClick={backdropHandler}></div>
 			<div className={styles.modal}>
 				<h3>Playlist</h3>
 
