@@ -8,6 +8,7 @@ const SingleVideo = () => {
 	const [currentVideo, setCurrentVideo] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const [showMore, setShowMore] = useState(false);
+	const [optionsVisible, setOptionsVisible] = useState(false);
 	const params = useParams();
 
 	useEffect(() => {
@@ -33,7 +34,13 @@ const SingleVideo = () => {
 							<h4>{currentVideo.title}</h4>
 							<div className={styles.videoDetails}>
 								<span>{currentVideo.viewCount}</span>
-								<div className={styles.btnContainer}>
+								<button
+									className={styles.options}
+									onClick={() => setOptionsVisible((prev) => !prev)}
+								>
+									<i className="fa-solid fa-ellipsis-vertical"></i>
+								</button>
+								<div className={`${styles.btnContainer} ${optionsVisible && styles.active}`}>
 									<button className="btn btn-primary">
 										Like
 										<i className="fa-solid fa-thumbs-up"></i>
