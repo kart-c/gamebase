@@ -1,21 +1,73 @@
 import { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import { useParams } from 'react-router-dom';
-import { getVideo } from '../../utils';
+import { PlaylistModal } from '../../components';
+import { useAuth, useLikes, useWatchLater } from '../../context';
+import { addToWatchLater, deleteLike, deleteWatchLater, getVideo, likesHandler } from '../../utils';
 import styles from './SingleVideo.module.css';
 
 const SingleVideo = () => {
 	const [currentVideo, setCurrentVideo] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const [showMore, setShowMore] = useState(false);
-	const [optionsVisible, setOptionsVisible] = useState(false);
+	const [isVisible, setIsVisible] = useState(false);
+	const [modalActive, setModalActive] = useState(false);
+	const [playlistVideo, setPlaylistVideo] = useState(null);
+	const [btnLoading, setBtnLoading] = useState({
+		likes: false,
+		watchLater: false,
+		playlist: false,
+	});
 	const params = useParams();
+	const {
+		likesState: { likes },
+		likesDispatch,
+	} = useLikes();
+	const {
+		authState: { token },
+	} = useAuth();
+	const {
+		watchLaterState: { watchlater },
+		watchLaterDispatch,
+	} = useWatchLater();
 
 	useEffect(() => {
 		getVideo(params._id, setCurrentVideo, setIsLoading);
 	}, []);
 
-	console.log(currentVideo);
+	// console.log(currentVideo);
+
+	const videoExists = likes.some((video) => video._id === currentVideo?._id);
+
+	const likeBtnHandler = (_id) => {
+		if (videoExists) {
+			deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible });
+		} else {
+			likesHandler({ token, video: currentVideo, likesDispatch, setBtnLoading, setIsVisible });
+		}
+	};
+
+	const watchlaterExists = watchlater.some((video) => video._id === currentVideo?._id);
+
+	const watchLaterHandler = (_id) => {
+		if (watchlaterExists) {
+			deleteWatchLater({ _id, token, watchLaterDispatch, setBtnLoading, setIsVisible });
+		} else {
+			addToWatchLater({
+				token,
+				video: currentVideo,
+				watchLaterDispatch,
+				setBtnLoading,
+				setIsVisible,
+			});
+		}
+	};
+
+	const playlistHandler = (_id) => {
+		setIsVisible(false);
+		setModalActive(true);
+		setPlaylistVideo(currentVideo);
+	};
 
 	return (
 		<div className={styles.pg}>
@@ -24,6 +76,9 @@ const SingleVideo = () => {
 			) : (
 				<>
 					<div className={styles.videoWrapper}>
+						{modalActive && (
+							<PlaylistModal setModalActive={setModalActive} playlistVideo={playlistVideo} />
+						)}
 						<ReactPlayer
 							url={`https://www.youtube.com/watch?v=${currentVideo._id}`}
 							controls
@@ -34,24 +89,32 @@ const SingleVideo = () => {
 							<h4>{currentVideo.title}</h4>
 							<div className={styles.videoDetails}>
 								<span>{currentVideo.viewCount}</span>
-								<button
-									className={styles.options}
-									onClick={() => setOptionsVisible((prev) => !prev)}
-								>
+								<button className={styles.options} onClick={() => setIsVisible((prev) => !prev)}>
 									<i className="fa-solid fa-ellipsis-vertical"></i>
 								</button>
-								<div className={`${styles.btnContainer} ${optionsVisible && styles.active}`}>
-									<button className="btn btn-primary">
-										Like
+								<div className={`${styles.btnContainer} ${isVisible && styles.active}`}>
+									<button
+										className={`btn btn-primary ${videoExists && styles.btnActive}`}
+										onClick={() => likeBtnHandler(currentVideo._id)}
+										disabled={btnLoading.likes}
+									>
 										<i className="fa-solid fa-thumbs-up"></i>
+										{videoExists ? 'Unlike' : 'Like'}
 									</button>
-									<button className="btn btn-primary">
-										Watch Later
+									<button
+										className={`btn btn-primary ${watchlaterExists && styles.btnActive}`}
+										onClick={() => watchLaterHandler(currentVideo._id)}
+										disabled={btnLoading.watchLater}
+									>
 										<i className="fa-solid fa-clock"></i>
+										{watchlaterExists ? 'Remove from Watch Later' : 'Add to Watch Later'}
 									</button>
-									<button className="btn btn-primary">
-										Playlist
+									<button
+										className="btn btn-primary"
+										onClick={() => playlistHandler(currentVideo._id)}
+									>
 										<i className="fa-solid fa-list-ul"></i>
+										Playlist
 									</button>
 								</div>
 							</div>
