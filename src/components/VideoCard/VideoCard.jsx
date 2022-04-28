@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth, useLikes, useWatchLater } from '../../context';
 import { likesHandler, deleteLike, addToWatchLater, deleteWatchLater } from '../../utils';
 import { PlaylistModal } from '../PlaylistModal/PlaylistModal';
@@ -23,6 +24,7 @@ const VideoCard = ({
 		watchLater: false,
 		playlist: false,
 	});
+	const navigate = useNavigate();
 	const {
 		authState: { token },
 	} = useAuth();
@@ -32,11 +34,15 @@ const VideoCard = ({
 		watchLaterDispatch,
 	} = useWatchLater();
 
-	const optionsHandler = () => setIsVisible((prev) => !prev);
+	const optionsHandler = (e) => {
+		e.stopPropagation();
+		setIsVisible((prev) => !prev);
+	};
 
 	const videoExists = likesState.likes.some((video) => video._id === _id);
 
-	const likeBtnHandler = (_id) => {
+	const likeBtnHandler = (e, _id) => {
+		e.stopPropagation();
 		const video = videos.find((video) => video._id === _id);
 		if (videoExists) {
 			deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible });
@@ -47,7 +53,8 @@ const VideoCard = ({
 
 	const watchlaterExists = watchlater.some((video) => video._id === _id);
 
-	const watchLaterHandler = (_id) => {
+	const watchLaterHandler = (e, _id) => {
+		e.stopPropagation();
 		if (watchlaterExists) {
 			deleteWatchLater({ _id, token, watchLaterDispatch, setBtnLoading, setIsVisible });
 		} else {
@@ -56,15 +63,20 @@ const VideoCard = ({
 		}
 	};
 
-	const playlistHandler = (_id) => {
+	const playlistHandler = (e, _id) => {
+		e.stopPropagation();
 		setIsVisible(false);
 		setModalActive(true);
 		const video = videos.find((video) => video._id === _id);
 		setPlaylistVideo(video);
 	};
 
+	const cardHandler = (_id) => {
+		navigate(`/explore/${_id}`);
+	};
+
 	return (
-		<article className={styles.card}>
+		<article className={styles.card} onClick={() => cardHandler(_id)}>
 			{modalActive && (
 				<PlaylistModal setModalActive={setModalActive} playlistVideo={playlistVideo} />
 			)}
@@ -77,7 +89,7 @@ const VideoCard = ({
 					<div className={`${styles.menu}`}>
 						<button
 							className="btn btn-primary"
-							onClick={() => likeBtnHandler(_id)}
+							onClick={(e) => likeBtnHandler(e, _id)}
 							disabled={btnLoading.likes}
 						>
 							<i className={videoExists ? 'fa-solid fa-thumbs-down' : 'fa-solid fa-thumbs-up'}></i>
@@ -85,13 +97,13 @@ const VideoCard = ({
 						</button>
 						<button
 							className="btn btn-primary"
-							onClick={() => watchLaterHandler(_id)}
+							onClick={(e) => watchLaterHandler(e, _id)}
 							disabled={btnLoading.watchLater}
 						>
-							<i className="fa-solid fa-clock"></i>{' '}
+							<i className="fa-solid fa-clock"></i>
 							{watchlaterExists ? 'Remove from Watch Later' : 'Add to Watch Later'}
 						</button>
-						<button className="btn btn-primary" onClick={() => playlistHandler(_id)}>
+						<button className="btn btn-primary" onClick={(e) => playlistHandler(e, _id)}>
 							<i className="fa-solid fa-list-ul"></i> Add to playlist
 						</button>
 					</div>
