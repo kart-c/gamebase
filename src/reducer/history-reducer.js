@@ -3,6 +3,9 @@ export const historyReducer = (state, { type, payload }) => {
 		case 'ADD_TO_HISTORY':
 			return { ...state, history: payload };
 
+		case 'REMOVE_FROM_HISTORY':
+			return { ...state, history: payload };
+
 		default:
 			throw new Error('NO CASE DEFINED IN HISTORY REDUCER');
 	}
