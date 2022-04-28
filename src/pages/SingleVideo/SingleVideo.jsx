@@ -35,8 +35,6 @@ const SingleVideo = () => {
 		getVideo(params._id, setCurrentVideo, setIsLoading);
 	}, []);
 
-	// console.log(currentVideo);
-
 	const videoExists = likes.some((video) => video._id === currentVideo?._id);
 
 	const likeBtnHandler = (_id) => {
