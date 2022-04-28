@@ -4,7 +4,7 @@ import { historyReducer } from '../reducer';
 const HistoryContext = createContext({ historyState: { history: [] }, historyDispatch: () => {} });
 
 const HistoryProvider = ({ children }) => {
-	const [historyState, historyDispatch] = useReducer(historyReducer, { history: [] });
+	const [historyState, historyDispatch] = useReducer(historyReducer, { history: [], date: null });
 
 	return (
 		<HistoryContext.Provider value={{ historyState, historyDispatch }}>

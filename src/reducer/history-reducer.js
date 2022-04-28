@@ -1,10 +1,10 @@
 export const historyReducer = (state, { type, payload }) => {
 	switch (type) {
 		case 'ADD_TO_HISTORY':
-			return { ...state, history: payload };
+			return { ...state, history: payload.history, date: payload.date };
 
 		case 'REMOVE_FROM_HISTORY':
-			return { ...state, history: payload };
+			return { ...state, history: payload.history, date: payload.date };
 
 		case 'GET_HISTORY':
 			return { ...state, history: payload };

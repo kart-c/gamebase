@@ -4,7 +4,10 @@ export const removeFromHistory = async (token, _id, historyDispatch) => {
 	try {
 		const response = await removeHistory(token, _id);
 		if (response.status === 200) {
-			historyDispatch({ type: 'REMOVE_FROM_HISTORY', payload: response.status.history });
+			historyDispatch({
+				type: 'REMOVE_FROM_HISTORY',
+				payload: { history: response.status.history, date: response.data.date },
+			});
 		}
 	} catch (error) {
 		console.error('ERROR: ', error.response);
