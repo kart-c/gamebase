@@ -1,5 +1,5 @@
 import { Response } from 'miragejs';
-import { requiresAuth } from '../utils/authUtils';
+import { formatDate, requiresAuth } from '../utils/authUtils';
 
 /**
  * All the routes related to User History are present here.
@@ -64,7 +64,7 @@ export const addVideoToHistoryHandler = function (schema, request) {
 			);
 		}
 		user.history.unshift(video);
-		return new Response(201, {}, { history: user.history });
+		return new Response(201, {}, { history: user.history, date: formatDate() });
 	} catch (error) {
 		return new Response(
 			500,
@@ -96,7 +96,7 @@ export const removeVideoFromHistoryHandler = function (schema, request) {
 		const videoId = request.params.videoId;
 		const filteredHistory = user.history.filter((item) => item._id !== videoId);
 		this.db.users.update({ history: filteredHistory });
-		return new Response(200, {}, { history: filteredHistory });
+		return new Response(200, {}, { history: filteredHistory, date: formatDate() });
 	} catch (error) {
 		return new Response(
 			500,
