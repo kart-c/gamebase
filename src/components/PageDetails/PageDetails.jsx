@@ -1,11 +1,20 @@
 import React from 'react';
 import { empty } from '../../assets';
+import { clearAllHistory } from '../../utils';
+import { useAuth, useHistory } from '../../context';
 import styles from './PageDetails.module.css';
 
 const PageDetails = ({ pg, length, video, date }) => {
+	const {
+		authState: { token },
+	} = useAuth();
+	const { historyDispatch } = useHistory();
+
 	const formattedDate = (date) => new Date(date).toDateString();
 
-	const deleteHandler = () => {};
+	const deleteHandler = () => {
+		clearAllHistory(token, historyDispatch);
+	};
 
 	return (
 		<section className={styles.pageDetails}>
