@@ -1,10 +1,10 @@
 import { addHistoryService } from '../services';
 
-export const addToHistory = async (token, video) => {
+export const addToHistory = async (token, video, historyDispatch) => {
 	try {
 		const response = await addHistoryService(token, video);
-		console.log(response);
 		if (response.status === 201) {
+			historyDispatch({ type: 'ADD_TO_HISTORY', payload: response.data.history });
 		}
 	} catch (error) {
 		console.error('ERROR: ', error.response);
