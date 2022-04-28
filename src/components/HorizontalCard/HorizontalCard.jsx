@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAuth, useLikes, usePlaylists, useWatchLater } from '../../context';
-import { deleteLike, deleteWatchLater, removeFromPlaylist } from '../../utils';
+import { useAuth, useHistory, useLikes, usePlaylists, useWatchLater } from '../../context';
+import { deleteLike, deleteWatchLater, removeFromHistory, removeFromPlaylist } from '../../utils';
 import styles from './HorizontalCard.module.css';
 
 const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id, playlist_id }) => {
@@ -16,6 +16,7 @@ const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id, playlis
 	let { pathname } = useLocation();
 	pathname = pathname.slice(1);
 	const navigate = useNavigate();
+	const { historyDispatch } = useHistory();
 
 	const optionsHandler = (e) => {
 		e.stopPropagation();
@@ -29,6 +30,9 @@ const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id, playlis
 
 			case 'watchlater':
 				return 'Remove from watch later';
+
+			case 'history':
+				return 'Remove from history';
 
 			default:
 				return 'Remove from playlist';
@@ -44,6 +48,10 @@ const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id, playlis
 
 			case 'watchlater':
 				deleteWatchLater({ _id, token, watchLaterDispatch, setBtnLoading, setIsVisible });
+				break;
+
+			case 'history':
+				removeFromHistory(token, _id, historyDispatch);
 				break;
 
 			default:
