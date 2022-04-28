@@ -13,3 +13,4 @@ export { deletePlaylist } from './delete-playlist-handler';
 export { getVideo } from './get-video-handler';
 export { addToHistory } from './add-to-history';
 export { removeFromHistory } from './remove-from-history';
+export { getHistory } from './get-history-handler';
