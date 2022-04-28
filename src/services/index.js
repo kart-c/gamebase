@@ -13,3 +13,4 @@ export { getPlaylistService } from './get-playlist.service';
 export { deletePlaylistService } from './delete-playlist.service';
 export { getVideoService } from './get-video.service';
 export { addHistoryService } from './add-to-history.service';
+export { removeHistory } from './remove-history.service';
