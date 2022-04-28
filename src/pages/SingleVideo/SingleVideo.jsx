@@ -10,6 +10,7 @@ import {
 	deleteWatchLater,
 	getVideo,
 	likesHandler,
+	removeFromHistory,
 } from '../../utils';
 import styles from './SingleVideo.module.css';
 
@@ -79,10 +80,15 @@ const SingleVideo = () => {
 	};
 
 	const historyHandler = (_id) => {
-		addToHistory(token, currentVideo, historyDispatch);
+		const inHistory = history.some((video) => video._id === _id);
+		if (inHistory) {
+			console.log('in history');
+			removeFromHistory(token, _id, historyDispatch);
+			addToHistory(token, currentVideo, historyDispatch);
+		} else {
+			addToHistory(token, currentVideo, historyDispatch);
+		}
 	};
-
-	console.log(history);
 
 	return (
 		<div className={styles.pg}>
@@ -99,7 +105,7 @@ const SingleVideo = () => {
 							controls
 							height="40rem"
 							width="100%"
-							onStart={historyHandler}
+							onStart={() => historyHandler(currentVideo._id)}
 						/>
 						<div className={styles.detailContainer}>
 							<h4>{currentVideo.title}</h4>
