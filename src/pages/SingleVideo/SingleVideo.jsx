@@ -82,7 +82,6 @@ const SingleVideo = () => {
 	const historyHandler = (_id) => {
 		const inHistory = history.some((video) => video._id === _id);
 		if (inHistory) {
-			console.log('in history');
 			removeFromHistory(token, _id, historyDispatch);
 			addToHistory(token, currentVideo, historyDispatch);
 		} else {
