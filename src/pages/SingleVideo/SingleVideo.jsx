@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import { useParams } from 'react-router-dom';
 import { PlaylistModal } from '../../components';
-import { useAuth, useLikes, useWatchLater } from '../../context';
+import { useAuth, useHistory, useLikes, useWatchLater } from '../../context';
 import {
 	addToHistory,
 	addToWatchLater,
@@ -37,6 +37,10 @@ const SingleVideo = () => {
 		watchLaterState: { watchlater },
 		watchLaterDispatch,
 	} = useWatchLater();
+	const {
+		historyState: { history },
+		historyDispatch,
+	} = useHistory();
 
 	useEffect(() => {
 		getVideo(params._id, setCurrentVideo, setIsLoading);
@@ -75,8 +79,10 @@ const SingleVideo = () => {
 	};
 
 	const historyHandler = (_id) => {
-		addToHistory(token, currentVideo);
+		addToHistory(token, currentVideo, historyDispatch);
 	};
+
+	console.log(history);
 
 	return (
 		<div className={styles.pg}>
