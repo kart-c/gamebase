@@ -9,6 +9,9 @@ export const historyReducer = (state, { type, payload }) => {
 		case 'GET_HISTORY':
 			return { ...state, history: payload };
 
+		case 'CLEAR_HISTORY':
+			return { ...state, history: payload };
+
 		default:
 			throw new Error('NO CASE DEFINED IN HISTORY REDUCER');
 	}
