@@ -15,3 +15,4 @@ export { getVideoService } from './get-video.service';
 export { addHistoryService } from './add-to-history.service';
 export { removeHistory } from './remove-history.service';
 export { getHistoryService } from './get-history.service';
+export { clearHistoryService } from './clear-history.service';
