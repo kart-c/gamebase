@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth, useLikes, usePlaylists, useWatchLater } from '../../context';
 import { deleteLike, deleteWatchLater, removeFromPlaylist } from '../../utils';
 import styles from './HorizontalCard.module.css';
@@ -15,8 +15,12 @@ const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id, playlis
 	const { watchLaterDispatch } = useWatchLater();
 	let { pathname } = useLocation();
 	pathname = pathname.slice(1);
+	const navigate = useNavigate();
 
-	const optionsHandler = () => setIsVisible((prev) => !prev);
+	const optionsHandler = (e) => {
+		e.stopPropagation();
+		setIsVisible((prev) => !prev);
+	};
 
 	const getName = (pathname) => {
 		switch (pathname) {
@@ -31,7 +35,8 @@ const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id, playlis
 		}
 	};
 
-	const removeHandler = (_id) => {
+	const removeHandler = (e, _id) => {
+		e.stopPropagation();
 		switch (pathname) {
 			case 'liked':
 				deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible });
@@ -47,10 +52,10 @@ const HorizontalCard = ({ videoThumbnail, title, channelName, time, _id, playlis
 	};
 
 	return (
-		<article className={styles.hrCard}>
+		<article className={styles.hrCard} onClick={() => navigate(`/explore/${_id}`)}>
 			{isVisible && (
 				<div className={styles.menu}>
-					<button onClick={() => removeHandler(_id)} disabled={btnLoading.likes}>
+					<button onClick={(e) => removeHandler(e, _id)} disabled={btnLoading.likes}>
 						{pathname === 'liked' && <i className="fa-solid fa-thumbs-down"></i>}
 						{getName(pathname)}
 					</button>
