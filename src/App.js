@@ -10,7 +10,7 @@ import {
 	SinglePlaylist,
 	SingleVideo,
 } from './pages';
-import { Aside, Header } from './components';
+import { Aside, Header, RequiresAuth } from './components';
 import './App.css';
 
 function App() {
@@ -25,10 +25,39 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/login" element={<Login />} />
 				<Route path="/signup" element={<Signup />} />
-				<Route path="/liked" element={<Liked />} />
-				<Route path="/history" element={<History />} />
-				<Route path="/watchlater" element={<WatchLater />} />
-				<Route path="/playlist" element={<Playlist />} />
+
+				<Route
+					path="/liked"
+					element={
+						<RequiresAuth>
+							<Liked />
+						</RequiresAuth>
+					}
+				/>
+				<Route
+					path="/history"
+					element={
+						<RequiresAuth>
+							<History />
+						</RequiresAuth>
+					}
+				/>
+				<Route
+					path="/watchlater"
+					element={
+						<RequiresAuth>
+							<WatchLater />
+						</RequiresAuth>
+					}
+				/>
+				<Route
+					path="/playlist"
+					element={
+						<RequiresAuth>
+							<Playlist />
+						</RequiresAuth>
+					}
+				/>
 				<Route path="/playlist/:_id" element={<SinglePlaylist />} />
 				<Route path="/explore/:_id" element={<SingleVideo />} />
 			</Routes>
