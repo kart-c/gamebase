@@ -19,11 +19,7 @@ function App() {
 	return (
 		<>
 			{location.pathname !== '/' && <Header />}
-			{location.pathname !== '/login' &&
-			location.pathname !== '/signup' &&
-			!location.pathname.includes('/explore/') ? (
-				<Aside />
-			) : null}
+			{location.pathname !== '/login' && location.pathname !== '/signup' ? <Aside /> : null}
 
 			<Routes>
 				<Route path="/" element={<Home />} />

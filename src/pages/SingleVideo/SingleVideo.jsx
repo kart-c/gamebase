@@ -90,7 +90,7 @@ const SingleVideo = () => {
 	};
 
 	return (
-		<div className={styles.pg}>
+		<div className="pg-defaults">
 			{isLoading ? (
 				'Loading'
 			) : (
