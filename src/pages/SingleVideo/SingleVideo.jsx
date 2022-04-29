@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player/youtube';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { PlaylistModal } from '../../components';
 import { useAuth, useHistory, useLikes, useWatchLater } from '../../context';
 import {
@@ -42,6 +42,7 @@ const SingleVideo = () => {
 		historyState: { history },
 		historyDispatch,
 	} = useHistory();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		getVideo(params._id, setCurrentVideo, setIsLoading);
@@ -50,42 +51,56 @@ const SingleVideo = () => {
 	const videoExists = likes.some((video) => video._id === currentVideo?._id);
 
 	const likeBtnHandler = (_id) => {
-		if (videoExists) {
-			deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible });
+		if (token) {
+			if (videoExists) {
+				deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible });
+			} else {
+				likesHandler({ token, video: currentVideo, likesDispatch, setBtnLoading, setIsVisible });
+			}
 		} else {
-			likesHandler({ token, video: currentVideo, likesDispatch, setBtnLoading, setIsVisible });
+			navigate('/login');
 		}
 	};
 
 	const watchlaterExists = watchlater.some((video) => video._id === currentVideo?._id);
 
 	const watchLaterHandler = (_id) => {
-		if (watchlaterExists) {
-			deleteWatchLater({ _id, token, watchLaterDispatch, setBtnLoading, setIsVisible });
+		if (token) {
+			if (watchlaterExists) {
+				deleteWatchLater({ _id, token, watchLaterDispatch, setBtnLoading, setIsVisible });
+			} else {
+				addToWatchLater({
+					token,
+					video: currentVideo,
+					watchLaterDispatch,
+					setBtnLoading,
+					setIsVisible,
+				});
+			}
 		} else {
-			addToWatchLater({
-				token,
-				video: currentVideo,
-				watchLaterDispatch,
-				setBtnLoading,
-				setIsVisible,
-			});
+			navigate('/login');
 		}
 	};
 
 	const playlistHandler = (_id) => {
-		setIsVisible(false);
-		setModalActive(true);
-		setPlaylistVideo(currentVideo);
+		if (token) {
+			setIsVisible(false);
+			setModalActive(true);
+			setPlaylistVideo(currentVideo);
+		} else {
+			navigate('/login');
+		}
 	};
 
 	const historyHandler = (_id) => {
-		const inHistory = history.some((video) => video._id === _id);
-		if (inHistory) {
-			removeFromHistory(token, _id, historyDispatch);
-			addToHistory(token, currentVideo, historyDispatch);
-		} else {
-			addToHistory(token, currentVideo, historyDispatch);
+		if (token) {
+			const inHistory = history.some((video) => video._id === _id);
+			if (inHistory) {
+				removeFromHistory(token, _id, historyDispatch);
+				addToHistory(token, currentVideo, historyDispatch);
+			} else {
+				addToHistory(token, currentVideo, historyDispatch);
+			}
 		}
 	};
 
