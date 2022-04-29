@@ -1,26 +1,43 @@
 import { useState, useEffect } from 'react';
 import { getVideos } from '../../utils/get-videos';
-import { CardContainer, VideoCard } from '../../components';
+import { CardContainer, Header, VideoCard } from '../../components';
 
 const Home = () => {
+	const [searchInput, setSearchInput] = useState('');
 	const [videos, setVideos] = useState([]);
 
 	useEffect(() => {
 		getVideos(setVideos);
 	}, []);
 
+	const searchHandler = (videos, searchInput) => {
+		const searchResult = videos.filter((video) =>
+			video.title.toLowerCase().includes(searchInput.toLowerCase().trim())
+		);
+		return searchResult;
+	};
+
+	const searchedVideos = searchHandler(videos, searchInput);
+
 	return (
-		<div className="pg-defaults">
-			<CardContainer>
-				{videos.length > 0
-					? videos.map((video) => (
-							<li key={video._id}>
-								<VideoCard {...video} videos={videos} />
-							</li>
-					  ))
-					: null}
-			</CardContainer>
-		</div>
+		<>
+			<Header
+				searchHandler={searchHandler}
+				searchInput={searchInput}
+				setSearchInput={setSearchInput}
+			/>
+			<div className="pg-defaults">
+				<CardContainer>
+					{searchedVideos.length > 0
+						? searchedVideos.map((video) => (
+								<li key={video._id}>
+									<VideoCard {...video} videos={videos} />
+								</li>
+						  ))
+						: null}
+				</CardContainer>
+			</div>
+		</>
 	);
 };
 
