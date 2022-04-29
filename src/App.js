@@ -18,7 +18,7 @@ function App() {
 
 	return (
 		<>
-			<Header />
+			{location.pathname !== '/' && <Header />}
 			{location.pathname !== '/login' &&
 			location.pathname !== '/signup' &&
 			!location.pathname.includes('/explore/') ? (
