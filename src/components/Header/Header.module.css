@@ -49,3 +49,17 @@
 .logoutBtn:active {
 	opacity: 0.7;
 }
+
+@media only screen and (max-width: 520px) {
+	.header {
+		flex-wrap: wrap;
+	}
+
+	.header input {
+		display: block;
+		width: 100%;
+		order: 2;
+		max-width: 100%;
+		margin-top: 1.6rem;
+	}
+}
