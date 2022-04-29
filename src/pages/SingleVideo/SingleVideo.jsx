@@ -2,8 +2,16 @@ import { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import { useParams } from 'react-router-dom';
 import { PlaylistModal } from '../../components';
-import { useAuth, useLikes, useWatchLater } from '../../context';
-import { addToWatchLater, deleteLike, deleteWatchLater, getVideo, likesHandler } from '../../utils';
+import { useAuth, useHistory, useLikes, useWatchLater } from '../../context';
+import {
+	addToHistory,
+	addToWatchLater,
+	deleteLike,
+	deleteWatchLater,
+	getVideo,
+	likesHandler,
+	removeFromHistory,
+} from '../../utils';
 import styles from './SingleVideo.module.css';
 
 const SingleVideo = () => {
@@ -30,6 +38,10 @@ const SingleVideo = () => {
 		watchLaterState: { watchlater },
 		watchLaterDispatch,
 	} = useWatchLater();
+	const {
+		historyState: { history },
+		historyDispatch,
+	} = useHistory();
 
 	useEffect(() => {
 		getVideo(params._id, setCurrentVideo, setIsLoading);
@@ -67,6 +79,16 @@ const SingleVideo = () => {
 		setPlaylistVideo(currentVideo);
 	};
 
+	const historyHandler = (_id) => {
+		const inHistory = history.some((video) => video._id === _id);
+		if (inHistory) {
+			removeFromHistory(token, _id, historyDispatch);
+			addToHistory(token, currentVideo, historyDispatch);
+		} else {
+			addToHistory(token, currentVideo, historyDispatch);
+		}
+	};
+
 	return (
 		<div className={styles.pg}>
 			{isLoading ? (
@@ -82,6 +104,7 @@ const SingleVideo = () => {
 							controls
 							height="40rem"
 							width="100%"
+							onStart={() => historyHandler(currentVideo._id)}
 						/>
 						<div className={styles.detailContainer}>
 							<h4>{currentVideo.title}</h4>
