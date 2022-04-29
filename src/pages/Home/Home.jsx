@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getVideos } from '../../utils/get-videos';
 import { CardContainer, Header, VideoCard } from '../../components';
+import styles from './Home.module.css';
 
 const Home = () => {
 	const [searchInput, setSearchInput] = useState('');
@@ -28,13 +29,15 @@ const Home = () => {
 			/>
 			<div className="pg-defaults">
 				<CardContainer>
-					{searchedVideos.length > 0
-						? searchedVideos.map((video) => (
-								<li key={video._id}>
-									<VideoCard {...video} videos={videos} />
-								</li>
-						  ))
-						: null}
+					{searchedVideos.length > 0 ? (
+						searchedVideos.map((video) => (
+							<li key={video._id}>
+								<VideoCard {...video} videos={videos} />
+							</li>
+						))
+					) : (
+						<div className={styles.noVideos}>No Videos Found</div>
+					)}
 				</CardContainer>
 			</div>
 		</>
