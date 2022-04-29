@@ -52,3 +52,9 @@
 		display: none;
 	}
 }
+
+@media only screen and (max-width: 520px) {
+	.homePg {
+		top: 12rem;
+	}
+}

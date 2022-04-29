@@ -36,5 +36,5 @@ body {
 
 /* for development purposes to avoid overlay bug */
 iframe {
-	/* pointer-events: none; */
+	pointer-events: none;
 }
