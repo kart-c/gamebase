@@ -23,6 +23,7 @@ body {
 @media only screen and (max-width: 840px) {
 	.pg-defaults {
 		margin-left: 8.8rem;
+		margin-right: 2.4rem;
 		transition: margin 0.2s ease-in;
 	}
 }
