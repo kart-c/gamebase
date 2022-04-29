@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context';
 import styles from './Header.module.css';
 
@@ -8,6 +8,7 @@ const Header = () => {
 		authState: { token },
 		authDispatch,
 	} = useAuth();
+	const location = useLocation();
 
 	const logoutHandler = () => {
 		authDispatch({ type: 'LOGOUT' });
@@ -19,7 +20,9 @@ const Header = () => {
 			<h2>
 				<Link to="/">GAMEBASE</Link>
 			</h2>
-			<input type="search" name="search" className="header-search" placeholder="Search..." />
+			{location.pathname === '/' && (
+				<input type="search" name="search" className="header-search" placeholder="Search..." />
+			)}
 			{token ? (
 				<button onClick={logoutHandler} className={styles.logoutBtn}>
 					Logout
