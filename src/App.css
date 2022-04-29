@@ -16,8 +16,7 @@ body {
 }
 
 .pg-defaults {
-	margin-top: 9.6rem;
-	margin-left: 26.4rem;
+	margin: 9.6rem 0 3.2rem 26.4rem;
 	transition: margin 0.2s ease-in;
 }
 
