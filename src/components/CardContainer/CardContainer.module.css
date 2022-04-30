@@ -3,8 +3,13 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
 	grid-gap: 2.4rem;
-	margin-right: 2.4rem;
 	justify-items: center;
+}
+
+@media only screen and (max-width: 840px) {
+	.cardContainer {
+		margin: auto;
+	}
 }
 
 @media only screen and (min-width: 1600px) {

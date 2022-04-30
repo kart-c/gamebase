@@ -27,7 +27,7 @@ const Home = () => {
 				searchInput={searchInput}
 				setSearchInput={setSearchInput}
 			/>
-			<div className="pg-defaults">
+			<div className={`pg-defaults ${styles.homePg}`}>
 				<CardContainer>
 					{searchedVideos.length > 0 ? (
 						searchedVideos.map((video) => (

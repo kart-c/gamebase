@@ -13,7 +13,7 @@ export const authHandler = async ({ authType, user, authDispatch, setUser, navig
 				payload: { token: response.data.encodedToken, user: response.data.foundUser },
 			});
 			setUser((prev) => ({ ...prev, email: '', password: '', rememberMe: false }));
-			navigate('/');
+			navigate(location?.state?.from?.pathname || -1, { replace: true });
 		} else {
 			localStorage.setItem('token', response.data.encodedToken);
 			localStorage.setItem('user', JSON.stringify(response.data.createdUser));
@@ -29,7 +29,7 @@ export const authHandler = async ({ authType, user, authDispatch, setUser, navig
 				lastName: '',
 				confirmPassword: '',
 			}));
-			navigate('/');
+			navigate(-2);
 		}
 	} catch (error) {
 		console.error(error.response);

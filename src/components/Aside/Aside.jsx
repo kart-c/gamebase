@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Aside.module.css';
 
 const Aside = () => {
+	const location = useLocation();
 	return (
-		<aside className={styles.aside}>
+		<aside className={`${styles.aside} ${location.pathname === '/' && styles.homePg}`}>
 			<nav>
 				<ul className={styles.sideNav}>
 					<li>

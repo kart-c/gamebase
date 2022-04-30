@@ -43,11 +43,15 @@ const VideoCard = ({
 
 	const likeBtnHandler = (e, _id) => {
 		e.stopPropagation();
-		const video = videos.find((video) => video._id === _id);
-		if (videoExists) {
-			deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible });
+		if (token) {
+			const video = videos.find((video) => video._id === _id);
+			if (videoExists) {
+				deleteLike({ _id, token, likesDispatch, setBtnLoading, setIsVisible });
+			} else {
+				likesHandler({ token, video, likesDispatch, setBtnLoading, setIsVisible });
+			}
 		} else {
-			likesHandler({ token, video, likesDispatch, setBtnLoading, setIsVisible });
+			navigate('/login');
 		}
 	};
 
@@ -55,20 +59,28 @@ const VideoCard = ({
 
 	const watchLaterHandler = (e, _id) => {
 		e.stopPropagation();
-		if (watchlaterExists) {
-			deleteWatchLater({ _id, token, watchLaterDispatch, setBtnLoading, setIsVisible });
+		if (token) {
+			if (watchlaterExists) {
+				deleteWatchLater({ _id, token, watchLaterDispatch, setBtnLoading, setIsVisible });
+			} else {
+				const video = videos.find((video) => video._id === _id);
+				addToWatchLater({ token, video, watchLaterDispatch, setBtnLoading, setIsVisible });
+			}
 		} else {
-			const video = videos.find((video) => video._id === _id);
-			addToWatchLater({ token, video, watchLaterDispatch, setBtnLoading, setIsVisible });
+			navigate('/login');
 		}
 	};
 
 	const playlistHandler = (e, _id) => {
 		e.stopPropagation();
-		setIsVisible(false);
-		setModalActive(true);
-		const video = videos.find((video) => video._id === _id);
-		setPlaylistVideo(video);
+		if (token) {
+			setIsVisible(false);
+			setModalActive(true);
+			const video = videos.find((video) => video._id === _id);
+			setPlaylistVideo(video);
+		} else {
+			navigate('/login');
+		}
 	};
 
 	const cardHandler = (_id) => {
