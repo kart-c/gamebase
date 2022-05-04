@@ -15,3 +15,4 @@ export { addToHistory } from './add-to-history';
 export { removeFromHistory } from './remove-from-history';
 export { getHistory } from './get-history-handler';
 export { clearAllHistory } from './clear-history-handler';
+export { getCategories } from './get-categories';
