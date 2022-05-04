@@ -1,0 +1,13 @@
+.filter {
+	padding: 5px 10px;
+	background-color: var(--btn-secondary);
+	color: var(--white-secondary);
+	font-size: var(--text-md);
+	margin-bottom: 1.6rem;
+}
+
+.filter > option {
+	padding: 5px 10px;
+	font-family: inherit;
+	font-size: var(--text-md);
+}
