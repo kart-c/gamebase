@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { useAuth, usePlaylists } from '../../context';
 import { addToPlaylist, newPlaylistHandler, removeFromPlaylist } from '../../utils';
 import styles from './PlaylistModal.module.css';
@@ -40,6 +41,8 @@ const PlaylistModal = ({ setModalActive, playlistVideo }) => {
 				playlistsDispatch,
 				setIsLoading,
 			});
+		} else {
+			toast.error('Title cannot be empty');
 		}
 	};
 
