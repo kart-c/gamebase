@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { authService } from '../services';
 
 export const authHandler = async ({ authType, user, authDispatch, setUser, navigate }) => {
@@ -5,6 +6,7 @@ export const authHandler = async ({ authType, user, authDispatch, setUser, navig
 		const response = await authService(authType, user);
 		if (response.status === 200) {
 			if (authType === 'login') {
+				toast.success(`Welcome back, ${response.data.foundUser.firstName}`);
 				if (user.rememberMe) {
 					localStorage.setItem('token', response.data.encodedToken);
 					localStorage.setItem('user', JSON.stringify(response.data.foundUser));
@@ -17,6 +19,7 @@ export const authHandler = async ({ authType, user, authDispatch, setUser, navig
 				navigate(location?.state?.from?.pathname || -1, { replace: true });
 			}
 		} else if (response.status === 201) {
+			toast.success(`Welcome, ${response.data.createdUser.firstName}`);
 			localStorage.setItem('token', response.data.encodedToken);
 			localStorage.setItem('user', JSON.stringify(response.data.createdUser));
 			authDispatch({
@@ -34,6 +37,7 @@ export const authHandler = async ({ authType, user, authDispatch, setUser, navig
 			navigate(-2);
 		}
 	} catch (error) {
-		console.error(error.response);
+		toast.error(error.response.data.errors[0]);
+		console.error(error);
 	}
 };
