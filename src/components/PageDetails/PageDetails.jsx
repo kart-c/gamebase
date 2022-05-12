@@ -2,6 +2,7 @@ import React from 'react';
 import { empty } from '../../assets';
 import { clearAllHistory } from '../../utils';
 import { useAuth, useHistory } from '../../context';
+import { useLocation } from 'react-router-dom';
 import styles from './PageDetails.module.css';
 
 const PageDetails = ({ pg, length, video, date }) => {
@@ -9,6 +10,7 @@ const PageDetails = ({ pg, length, video, date }) => {
 		authState: { token },
 	} = useAuth();
 	const { historyDispatch } = useHistory();
+	const location = useLocation();
 
 	const formattedDate = (date) => new Date(date).toDateString();
 
@@ -29,7 +31,7 @@ const PageDetails = ({ pg, length, video, date }) => {
 					<span className={styles.date}>Last Updated on {formattedDate(date)}</span>
 				) : null}
 			</div>
-			{length ? (
+			{length && location.pathname === '/history' ? (
 				<button className={`btn btn-primary ${styles.deleteBtn}`} onClick={deleteHandler}>
 					Delete all history
 				</button>
