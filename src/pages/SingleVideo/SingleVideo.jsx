@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import { useNavigate, useParams } from 'react-router-dom';
-import { PlaylistModal } from '../../components';
+import { Loader, PlaylistModal } from '../../components';
 import { useAuth, useHistory, useLikes, useWatchLater } from '../../context';
 import {
 	addToHistory,
@@ -107,7 +107,7 @@ const SingleVideo = () => {
 	return (
 		<div className="pg-defaults">
 			{isLoading ? (
-				'Loading'
+				<Loader />
 			) : (
 				<>
 					<div className={styles.videoWrapper}>
