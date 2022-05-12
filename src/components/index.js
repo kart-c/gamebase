@@ -9,3 +9,4 @@ export { PlaylistCard } from './PlaylistCard/PlaylistCard';
 export { PlaylistModal } from './PlaylistModal/PlaylistModal';
 export { RequiresAuth } from './RequiresAuth/RequiresAuth';
 export { Filters } from './Filters/Filters';
+export { Loader } from './Loader/Loader';
