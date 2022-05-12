@@ -77,7 +77,7 @@ const PlaylistModal = ({ setModalActive, playlistVideo }) => {
 	return (
 		<>
 			<div className={styles.backdrop} onClick={backdropHandler}></div>
-			<div className={styles.modal}>
+			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>
 				<h3>Playlist</h3>
 
 				{!newPlaylist && (
@@ -101,7 +101,10 @@ const PlaylistModal = ({ setModalActive, playlistVideo }) => {
 						) : null}
 						<button
 							className={`btn btn-primary ${styles.modalBtn}`}
-							onClick={() => setNewPlaylist(true)}
+							onClick={(e) => {
+								e.stopPropagation();
+								setNewPlaylist(true);
+							}}
 						>
 							Add Playlist
 						</button>
