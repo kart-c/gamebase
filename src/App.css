@@ -7,6 +7,12 @@
 	--btn-secondary: #3c3f46;
 	--white-primary: #fff;
 	--white-secondary: #ddd;
+	--toastify-toast-min-height: 5.6rem;
+	--toastify-color-info: var(--info-color);
+}
+
+.Toastify__toast-container--top-right {
+	font-size: var(--text-md);
 }
 
 body {
