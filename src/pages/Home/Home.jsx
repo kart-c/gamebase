@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import { getVideos } from '../../utils/get-videos';
-import { CardContainer, Filters, Header, VideoCard } from '../../components';
+import { CardContainer, Filters, Header, Loader, VideoCard } from '../../components';
 import styles from './Home.module.css';
 
 const Home = () => {
 	const [searchInput, setSearchInput] = useState('');
 	const [videos, setVideos] = useState([]);
 	const [filterInput, setFilterInput] = useState('');
-
+	const [loading, setLoading] = useState(true);
 	useEffect(() => {
-		getVideos(setVideos);
+		getVideos(setVideos, setLoading);
 	}, []);
 
 	const searchHandler = (videos, searchInput) => {
@@ -44,7 +44,9 @@ const Home = () => {
 			<div className={`pg-defaults ${styles.homePg}`}>
 				<Filters setFilterInput={setFilterInput} />
 				<CardContainer>
-					{searchedVideos.length > 0 ? (
+					{loading ? (
+						<Loader />
+					) : searchedVideos.length > 0 ? (
 						searchedVideos.map((video) => (
 							<li key={video._id}>
 								<VideoCard {...video} videos={videos} />

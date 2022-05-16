@@ -68,7 +68,7 @@
 	background-color: inherit;
 	color: inherit;
 	font-size: var(--text-md);
-	padding: 4px;
+	padding: 10px;
 }
 
 .options:hover {

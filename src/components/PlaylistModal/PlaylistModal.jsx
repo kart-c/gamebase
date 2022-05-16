@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { useAuth, usePlaylists } from '../../context';
 import { addToPlaylist, newPlaylistHandler, removeFromPlaylist } from '../../utils';
 import styles from './PlaylistModal.module.css';
@@ -40,6 +41,8 @@ const PlaylistModal = ({ setModalActive, playlistVideo }) => {
 				playlistsDispatch,
 				setIsLoading,
 			});
+		} else {
+			toast.error('Title cannot be empty');
 		}
 	};
 
@@ -77,7 +80,7 @@ const PlaylistModal = ({ setModalActive, playlistVideo }) => {
 	return (
 		<>
 			<div className={styles.backdrop} onClick={backdropHandler}></div>
-			<div className={styles.modal}>
+			<div className={styles.modal} onClick={(e) => e.stopPropagation()}>
 				<h3>Playlist</h3>
 
 				{!newPlaylist && (
@@ -101,7 +104,10 @@ const PlaylistModal = ({ setModalActive, playlistVideo }) => {
 						) : null}
 						<button
 							className={`btn btn-primary ${styles.modalBtn}`}
-							onClick={() => setNewPlaylist(true)}
+							onClick={(e) => {
+								e.stopPropagation();
+								setNewPlaylist(true);
+							}}
 						>
 							Add Playlist
 						</button>

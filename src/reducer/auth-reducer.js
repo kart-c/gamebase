@@ -6,9 +6,6 @@ export const authReducer = (state, { type, payload }) => {
 		case 'SIGNUP':
 			return { ...state, token: payload.token, user: payload.user };
 
-		case 'FETCH_USER':
-			return { ...state, token: payload.token, user: payload.user };
-
 		case 'LOGOUT':
 			return { ...state, token: '', user: '' };
 

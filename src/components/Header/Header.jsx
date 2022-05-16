@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useAuth } from '../../context';
 import styles from './Header.module.css';
 
@@ -11,6 +12,7 @@ const Header = ({ searchInput, setSearchInput }) => {
 	const location = useLocation();
 
 	const logoutHandler = () => {
+		toast.success('Logged out successfully');
 		authDispatch({ type: 'LOGOUT' });
 		localStorage.removeItem('token');
 		localStorage.removeItem('user');

@@ -36,6 +36,7 @@ const Login = () => {
 			...prev,
 			email: 'adarshbalika@gmail.com',
 			password: 'adarshBalika123',
+			rememberMe: true,
 		}));
 
 	return (
@@ -80,7 +81,7 @@ const Login = () => {
 					name="remember me"
 					id="remember-me"
 					className={styles.checkbox}
-					value={user.rememberMe}
+					checked={user.rememberMe}
 					onChange={() => setUser((prev) => ({ ...prev, rememberMe: !prev.rememberMe }))}
 				/>
 				<label htmlFor="remember-me">Remember me</label>
