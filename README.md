@@ -76,7 +76,7 @@ If you would like to request a feature, or report a bug simple click [here](http
 ## Demo Gif
 
 <p align="center">
-  <img width="100%" src=".src/assets/gamebase.gif" alt="GameBase"/>
+  <img width="100%" src="./src/assets/gamebase.gif" alt="GameBase"/>
 </p>
 
 ## Connect with me
