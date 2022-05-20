@@ -75,7 +75,10 @@ If you would like to request a feature, or report a bug simple click [here](http
 
 ## Demo Gif
 
-<img src='src/assets/gamebase.gif' alt='demo video'/>
+<p align="center">
+  <img width="100%" src=".src/assets/gamebase.gif" alt="GameBase"/>
+</p>
+
 ## Connect with me
 
 <a href="https://twitter.com/kart_c11"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white"/></a>
