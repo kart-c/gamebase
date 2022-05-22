@@ -19,6 +19,7 @@
 	max-width: 40rem;
 	border-radius: 0;
 	background-color: var(--btn-secondary);
+	color: var(--white-primary);
 }
 
 .header a {
