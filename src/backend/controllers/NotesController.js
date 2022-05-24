@@ -39,7 +39,7 @@ export const addItemToNotesHandler = function (schema, request) {
 		} else
 			user.notes.push({
 				_id: video._id,
-				vidNotes: [{ _id: uuid(), ...note, updatedAt: formatDate() }],
+				vidNotes: [{ _id: uuid(), note, updatedAt: formatDate() }],
 			});
 
 		return new Response(201, {}, { notes: user.notes });

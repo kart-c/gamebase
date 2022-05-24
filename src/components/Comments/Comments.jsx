@@ -1,18 +1,28 @@
 import { useEffect, useState } from 'react';
-import { useAuth } from '../../context';
-import { getComments } from '../../utils';
+import { useAuth, useComment } from '../../context';
+import { getComments, newComment } from '../../utils';
 import styles from './Comments.module.css';
 
-const Comments = () => {
+const Comments = ({ _id }) => {
 	const [comment, setComment] = useState('');
 	const {
 		authState: { token, user },
 	} = useAuth();
+
+	const {
+		commentState: { comments },
+		commentDispatch,
+	} = useComment();
+
+	const postComments = comments.find((comment) => comment._id === _id);
+
 	useEffect(() => {
-		getComments(token);
+		getComments(token, commentDispatch);
 	}, []);
 
-	console.log(user);
+	const newCommentHandler = () => {
+		newComment(_id, token, comment, commentDispatch, setComment);
+	};
 
 	return (
 		<div className={styles.commentContainer}>
@@ -33,27 +43,32 @@ const Comments = () => {
 							Cancel
 						</button>
 					) : null}
-					<button className="btn btn-info" disabled={!comment}>
+					<button className="btn btn-info" disabled={!comment} onClick={newCommentHandler}>
 						Add
 					</button>
 				</div>
 			</div>
-			<div className={styles.comment}>
-				<div>
-					<span>
-						{user.firstName} {user.lastName}
-					</span>
-					<p>new comment</p>
-				</div>
-				<div className={styles.commentBtns}>
-					<button title="Edit">
-						<i className="fa-solid fa-pen-to-square"></i>
-					</button>
-					<button title="Delete">
-						<i className="fa-solid fa-trash-can"></i>
-					</button>
-				</div>
-			</div>
+
+			{postComments?.vidNotes?.length > 0
+				? postComments.vidNotes.map((postComment) => (
+						<div className={styles.comment} key={postComment._id}>
+							<div>
+								<span>
+									{user.firstName} {user.lastName}
+								</span>
+								<p>new comment</p>
+							</div>
+							<div className={styles.commentBtns}>
+								<button title="Edit">
+									<i className="fa-solid fa-pen-to-square"></i>
+								</button>
+								<button title="Delete">
+									<i className="fa-solid fa-trash-can"></i>
+								</button>
+							</div>
+						</div>
+				  ))
+				: null}
 		</div>
 	);
 };
