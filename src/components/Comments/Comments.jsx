@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth, useComment } from '../../context';
-import { getComments, newComment } from '../../utils';
+import { getComments, newComment, deleteComment } from '../../utils';
 import styles from './Comments.module.css';
 
 const Comments = ({ _id }) => {
@@ -20,9 +20,9 @@ const Comments = ({ _id }) => {
 		getComments(token, commentDispatch);
 	}, []);
 
-	const newCommentHandler = () => {
-		newComment(_id, token, comment, commentDispatch, setComment);
-	};
+	const newCommentHandler = () => newComment(_id, token, comment, commentDispatch, setComment);
+
+	const deleteCommentHandler = (note) => deleteComment(_id, token, note, commentDispatch);
 
 	return (
 		<div className={styles.commentContainer}>
@@ -56,13 +56,16 @@ const Comments = ({ _id }) => {
 								<span>
 									{user.firstName} {user.lastName}
 								</span>
-								<p>new comment</p>
+								<p>{postComment.note}</p>
 							</div>
 							<div className={styles.commentBtns}>
 								<button title="Edit">
 									<i className="fa-solid fa-pen-to-square"></i>
 								</button>
-								<button title="Delete">
+								<button
+									title="Delete"
+									onClick={() => deleteCommentHandler({ _id: postComment._id })}
+								>
 									<i className="fa-solid fa-trash-can"></i>
 								</button>
 							</div>

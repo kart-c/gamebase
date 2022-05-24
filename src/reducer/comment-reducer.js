@@ -6,6 +6,9 @@ export const commentReducer = (state, { type, payload }) => {
 		case 'NEW_COMMENT':
 			return { ...state, comments: payload };
 
+		case 'DELETE_COMMENT':
+			return { ...state, comments: payload };
+
 		default:
 			throw new Error('NO CASE DEFINED IN COMMENT REDUCER');
 	}
