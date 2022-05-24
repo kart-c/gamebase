@@ -1,6 +1,7 @@
 .videoWrapper {
 	width: 100%;
 	max-width: 96rem;
+	margin: auto;
 }
 
 .detailContainer > h4 {
