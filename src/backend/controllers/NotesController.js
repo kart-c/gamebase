@@ -29,7 +29,7 @@ export const addItemToNotesHandler = function (schema, request) {
 				if (currNote._id === video._id)
 					currNote.vidNotes.push({
 						_id: uuid(),
-						...note,
+						note,
 						updatedAt: formatDate(),
 					});
 				return currNote;
