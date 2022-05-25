@@ -10,7 +10,6 @@ export const editComment = async (_id, token, note, commentDispatch) => {
 		if (response.status === 200) {
 			commentDispatch({ type: 'EDIT_COMMENT', payload: response.data.notes });
 		}
-		console.log(response);
 	} catch (error) {
 		console.error('ERROR', error);
 	}

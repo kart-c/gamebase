@@ -92,7 +92,6 @@ export const updateNoteHandler = function (schema, request) {
 		const { videoId } = request.params;
 
 		const { note } = JSON.parse(request.requestBody);
-		console.log(note);
 
 		const video = schema.videos.findBy({ _id: videoId }).attrs;
 
@@ -100,7 +99,6 @@ export const updateNoteHandler = function (schema, request) {
 			if (currNote._id === video._id) {
 				const newVidNotes = currNote.vidNotes.map((vidNote) => {
 					if (vidNote._id === note._id) {
-						console.log(vidNote, 'vidnote');
 						return {
 							...vidNote,
 							note: note.note,
