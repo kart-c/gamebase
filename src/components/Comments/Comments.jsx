@@ -7,7 +7,7 @@ import styles from './Comments.module.css';
 
 const Comments = ({ _id }) => {
 	const [comment, setComment] = useState('');
-	const [isEditing, setIsEditing] = useState(false);
+	const [isEditing, setIsEditing] = useState('');
 	const [editedComment, setEditedComment] = useState('');
 	const {
 		authState: { token, user },
@@ -44,7 +44,16 @@ const Comments = ({ _id }) => {
 
 	const editCommentHandler = async (note) => {
 		await editComment(_id, token, note, commentDispatch);
-		setIsEditing(false);
+		setIsEditing('');
+	};
+
+	const editBtnHandler = (_id) => {
+		if (token) {
+			setIsEditing(_id);
+		} else {
+			toast.error('You need to login');
+			navigate('/login');
+		}
 	};
 
 	return (
@@ -75,7 +84,7 @@ const Comments = ({ _id }) => {
 			{postComments?.vidNotes?.length > 0
 				? postComments.vidNotes.map((postComment) => (
 						<div className={styles.comment} key={postComment._id}>
-							{isEditing ? (
+							{isEditing === postComment._id ? (
 								<>
 									<input
 										className={styles.commentInput}
@@ -115,19 +124,12 @@ const Comments = ({ _id }) => {
 							)}
 
 							<div className={styles.commentBtns}>
-								{isEditing ? null : (
+								{isEditing === postComment._id ? null : (
 									<>
 										<button
 											title="Edit"
 											className="btn btn-primary"
-											onClick={() => {
-												if (token) {
-													setIsEditing(true);
-												} else {
-													toast.error('You need to login');
-													navigate('/login');
-												}
-											}}
+											onClick={() => editBtnHandler(postComment._id)}
 										>
 											Edit
 										</button>
