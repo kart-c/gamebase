@@ -19,9 +19,12 @@
 	box-sizing: border-box;
 	font-size: var(--text-md);
 	padding: 4px;
-	margin-top: 1.6rem;
 	resize: none;
 	width: 100%;
+}
+
+.newCommentInput {
+	margin-top: 1.6rem;
 }
 
 .commentBoxButton {
@@ -58,10 +61,16 @@
 	margin-left: auto;
 	display: flex;
 	gap: 1.6rem;
+	align-items: flex-end;
 }
 
 .commentBtns > button {
 	background-color: transparent;
 	font-size: var(--text-md);
 	color: var(--white-primary);
+	padding: 8px 10px;
+}
+
+.editingInput {
+	width: 100%;
 }
