@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useAuth, useComment } from '../../context';
 import { getComments, newComment, deleteComment, editComment } from '../../utils';
 import styles from './Comments.module.css';
@@ -10,11 +12,11 @@ const Comments = ({ _id }) => {
 	const {
 		authState: { token, user },
 	} = useAuth();
-
 	const {
 		commentState: { comments },
 		commentDispatch,
 	} = useComment();
+	const navigate = useNavigate();
 
 	const postComments = comments.find((comment) => comment._id === _id);
 
@@ -22,9 +24,23 @@ const Comments = ({ _id }) => {
 		getComments(token, commentDispatch);
 	}, []);
 
-	const newCommentHandler = () => newComment(_id, token, comment, commentDispatch, setComment);
+	const newCommentHandler = () => {
+		if (token) {
+			newComment(_id, token, comment, commentDispatch, setComment);
+		} else {
+			toast.error('You need to login');
+			navigate('/login');
+		}
+	};
 
-	const deleteCommentHandler = (note) => deleteComment(_id, token, note, commentDispatch);
+	const deleteCommentHandler = (note) => {
+		if (token) {
+			deleteComment(_id, token, note, commentDispatch);
+		} else {
+			toast.error('You need to login');
+			navigate('/login');
+		}
+	};
 
 	const editCommentHandler = async (note) => {
 		await editComment(_id, token, note, commentDispatch);
@@ -104,7 +120,14 @@ const Comments = ({ _id }) => {
 										<button
 											title="Edit"
 											className="btn btn-primary"
-											onClick={() => setIsEditing(true)}
+											onClick={() => {
+												if (token) {
+													setIsEditing(true);
+												} else {
+													toast.error('You need to login');
+													navigate('/login');
+												}
+											}}
 										>
 											Edit
 										</button>
