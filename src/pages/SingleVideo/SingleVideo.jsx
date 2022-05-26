@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player/youtube';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Loader, PlaylistModal } from '../../components';
+import { Comments, Loader, PlaylistModal } from '../../components';
 import { useAuth, useHistory, useLikes, useWatchLater } from '../../context';
 import {
 	addToHistory,
@@ -180,6 +180,7 @@ const SingleVideo = () => {
 								</p>
 							</div>
 						</div>
+						<Comments _id={currentVideo._id} />
 					</div>
 				</>
 			)}

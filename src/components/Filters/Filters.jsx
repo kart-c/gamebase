@@ -10,7 +10,7 @@ const Filters = ({ setFilterInput }) => {
 	}, []);
 
 	return (
-		<div>
+		<div className={styles.filterContainer}>
 			<select
 				name="category"
 				id="category"
