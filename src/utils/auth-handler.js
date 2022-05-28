@@ -20,8 +20,6 @@ export const authHandler = async ({ authType, user, authDispatch, setUser, navig
 			}
 		} else if (response.status === 201) {
 			toast.success(`Welcome, ${response.data.createdUser.firstName}`);
-			localStorage.setItem('token', response.data.encodedToken);
-			localStorage.setItem('user', JSON.stringify(response.data.createdUser));
 			authDispatch({
 				type: 'SIGNUP',
 				payload: { token: response.data.encodedToken, user: response.data.createdUser },
