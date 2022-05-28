@@ -121,4 +121,6 @@
 .guestBtn {
 	margin-bottom: 1.6rem;
 	color: var(--black);
+	width: max-content;
+	padding: 10px;
 }

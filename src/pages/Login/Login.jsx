@@ -34,8 +34,8 @@ const Login = () => {
 	const guestLoginHandler = () =>
 		setUser((prev) => ({
 			...prev,
-			email: 'adarshbalika@gmail.com',
-			password: 'adarshBalika123',
+			email: 'kartik@gmail.com',
+			password: 'KartikC123',
 			rememberMe: true,
 		}));
 
@@ -91,7 +91,7 @@ const Login = () => {
 				type="button"
 				onClick={guestLoginHandler}
 			>
-				Guest Login
+				Use Guest Credentails
 			</button>
 			<button className={`${styles.btn} ${styles.primaryBtn}`} type="button" onClick={loginHandler}>
 				Login
