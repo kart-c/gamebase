@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context';
+import { useAuth, useLikes, usePlaylists, useWatchLater } from '../../context';
 import { authHandler } from '../../utils/auth-handler';
 import styles from './Login.module.css';
 
@@ -12,6 +12,9 @@ const Login = () => {
 		rememberMe: false,
 	});
 	const { authDispatch } = useAuth();
+	const { likesDispatch } = useLikes();
+	const { watchLaterDispatch } = useWatchLater();
+	const { playlistsDispatch } = usePlaylists();
 	const navigate = useNavigate();
 
 	const inputHandler = (e) => {
@@ -27,7 +30,16 @@ const Login = () => {
 	const loginHandler = (e) => {
 		if (user.email && user.password) {
 			e.preventDefault();
-			authHandler({ authType: 'login', user, authDispatch, setUser, navigate });
+			authHandler({
+				authType: 'login',
+				user,
+				authDispatch,
+				setUser,
+				navigate,
+				likesDispatch,
+				watchLaterDispatch,
+				playlistsDispatch,
+			});
 		}
 	};
 
