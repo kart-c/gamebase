@@ -77,7 +77,7 @@ const Header = ({ videos }) => {
 										{listItem.title}
 									</li>
 							  ))
-							: 'No products found'}
+							: 'No videos found'}
 					</ul>
 				) : null}
 			</div>
