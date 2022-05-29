@@ -55,6 +55,10 @@
 	padding: 10px;
 }
 
+.showPasswordBtn:focus {
+	outline: 2px solid var(--info-color);
+}
+
 .checkboxContainer {
 	margin: 1.6rem 0;
 }
@@ -121,4 +125,6 @@
 .guestBtn {
 	margin-bottom: 1.6rem;
 	color: var(--black);
+	width: max-content;
+	padding: 10px;
 }

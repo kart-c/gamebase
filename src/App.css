@@ -11,7 +11,7 @@
 	--toastify-color-info: var(--info-color);
 }
 
-.Toastify__toast-container--top-right {
+.Toastify__toast-container--bottom-right {
 	font-size: var(--text-md);
 }
 
@@ -40,6 +40,6 @@ body {
 }
 
 /* for development purposes to avoid overlay bug */
-iframe {
+/* iframe {
 	pointer-events: none;
-}
+} */
