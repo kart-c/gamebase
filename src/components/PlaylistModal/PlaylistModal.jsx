@@ -40,6 +40,9 @@ const PlaylistModal = ({ setModalActive, playlistVideo }) => {
 				setNewPlaylist,
 				playlistsDispatch,
 				setIsLoading,
+				playlistVideo,
+				setCheckboxLoader,
+				playlists,
 			});
 		} else {
 			toast.error('Title cannot be empty');
