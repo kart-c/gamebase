@@ -9,6 +9,7 @@ import {
 	Playlist,
 	SinglePlaylist,
 	SingleVideo,
+	Error,
 } from './pages';
 import { Aside, Header, RequiresAuth } from './components';
 import { ToastContainer } from 'react-toastify';
@@ -72,6 +73,7 @@ function App() {
 				/>
 				<Route path="/playlist/:_id" element={<SinglePlaylist />} />
 				<Route path="/explore/:_id" element={<SingleVideo />} />
+				<Route path="*" element={<Error />} />
 			</Routes>
 		</>
 	);

@@ -15,6 +15,7 @@ import xbox from './xbox.jpg';
 import ign from './ign.jpg';
 import rockstar from './rockstar.jpg';
 import empty from './empty.png';
+import error404 from './404.png';
 
 export {
 	AOE,
@@ -34,4 +35,5 @@ export {
 	ign,
 	rockstar,
 	empty,
+	error404,
 };
