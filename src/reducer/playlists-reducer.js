@@ -23,6 +23,9 @@ export const playlistsReducer = (state, { type, payload }) => {
 				);
 			return { ...state, playlists: filterPlaylists(state.playlists), date: payload.date };
 
+		case 'CLEAR':
+			return { ...state, playlists: [] };
+
 		default:
 			throw new Error('NO CASE DEFINED IN PLAYLISTS REDUCER');
 	}
