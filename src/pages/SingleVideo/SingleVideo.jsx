@@ -45,7 +45,7 @@ const SingleVideo = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		getVideo(params._id, setCurrentVideo, setIsLoading);
+		getVideo(params._id, setCurrentVideo, setIsLoading, navigate);
 	}, []);
 
 	const videoExists = likes.some((video) => video._id === currentVideo?._id);
