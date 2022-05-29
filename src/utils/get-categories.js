@@ -7,6 +7,6 @@ export const getCategories = async (setCategories) => {
 			setCategories(response.data.categories);
 		}
 	} catch (error) {
-		console.error('ERROR: ', error.response);
+		console.error('ERROR: ', error);
 	}
 };

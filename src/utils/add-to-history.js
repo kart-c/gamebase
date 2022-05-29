@@ -10,6 +10,6 @@ export const addToHistory = async (token, video, historyDispatch) => {
 			});
 		}
 	} catch (error) {
-		console.error('ERROR: ', error.response);
+		console.error('ERROR: ', error);
 	}
 };

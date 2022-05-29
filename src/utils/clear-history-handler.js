@@ -7,6 +7,6 @@ export const clearAllHistory = async (token, historyDispatch) => {
 			historyDispatch({ type: 'CLEAR_HISTORY', payload: response.data.history });
 		}
 	} catch (error) {
-		console.error('ERROR: ', error.response);
+		console.error('ERROR: ', error);
 	}
 };
