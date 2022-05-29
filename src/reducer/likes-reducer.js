@@ -9,6 +9,9 @@ export const likesReducer = (state, { type, payload }) => {
 		case 'FETCH_LIKED_VIDEOS':
 			return { ...state, likes: payload };
 
+		case 'CLEAR':
+			return { ...state, likes: [] };
+
 		default:
 			throw new Error('NO CASE DEFINED IN LIKES REDUCER');
 	}

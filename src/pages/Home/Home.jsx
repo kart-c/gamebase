@@ -4,23 +4,12 @@ import { CardContainer, Filters, Header, Loader, VideoCard } from '../../compone
 import styles from './Home.module.css';
 
 const Home = () => {
-	const [searchInput, setSearchInput] = useState('');
 	const [videos, setVideos] = useState([]);
 	const [filterInput, setFilterInput] = useState('');
 	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		getVideos(setVideos, setLoading);
 	}, []);
-
-	const searchHandler = (videos, searchInput) => {
-		if (searchInput) {
-			const searchResult = videos.filter((video) =>
-				video.title.toLowerCase().includes(searchInput.toLowerCase().trim())
-			);
-			return searchResult;
-		}
-		return videos;
-	};
 
 	const filterHandler = (videos, filterInput) => {
 		if (filterInput) {
@@ -32,22 +21,16 @@ const Home = () => {
 
 	const filteredVideos = filterHandler(videos, filterInput);
 
-	const searchedVideos = searchHandler(filteredVideos, searchInput);
-
 	return (
 		<>
-			<Header
-				searchHandler={searchHandler}
-				searchInput={searchInput}
-				setSearchInput={setSearchInput}
-			/>
+			<Header videos={videos} />
 			<div className={`pg-defaults ${styles.homePg}`}>
 				<Filters setFilterInput={setFilterInput} />
 				<CardContainer>
 					{loading ? (
 						<Loader />
-					) : searchedVideos.length > 0 ? (
-						searchedVideos.map((video) => (
+					) : filteredVideos.length > 0 ? (
+						filteredVideos.map((video) => (
 							<li key={video._id}>
 								<VideoCard {...video} videos={videos} />
 							</li>

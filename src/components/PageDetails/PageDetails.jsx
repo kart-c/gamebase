@@ -22,7 +22,6 @@ const PageDetails = ({ pg, length, video, date }) => {
 		<section className={styles.pageDetails}>
 			<div className={styles.imgContainer}>
 				<img src={video ? video.videoThumbnail : empty} alt="liked page" className="resp-img" />
-				{pg !== 'History' && <button className="btn btn-primary">Play</button>}
 			</div>
 			<h3 className={styles.title}>{pg} Videos</h3>
 			<div className={styles.description}>

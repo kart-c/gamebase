@@ -9,6 +9,6 @@ export const getWatchLater = async (watchLaterDispatch, token, setLoading) => {
 	} catch (error) {
 		console.error('ERROR: ', error);
 	} finally {
-		setLoading(false);
+		setLoading && setLoading(false);
 	}
 };

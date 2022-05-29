@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useAuth } from '../../context';
 import { authHandler } from '../../utils/auth-handler';
 import styles from '../Login/Login.module.css';
@@ -29,7 +30,7 @@ const Signup = () => {
 			if (user.password === user.confirmPassword) {
 				authHandler({ authType: 'signup', user, setUser, navigate, authDispatch });
 			} else {
-				alert('passwords should be same');
+				toast.error('passwords should be same');
 			}
 		}
 	};

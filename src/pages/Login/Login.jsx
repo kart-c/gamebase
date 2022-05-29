@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context';
+import { useAuth, useLikes, usePlaylists, useWatchLater } from '../../context';
 import { authHandler } from '../../utils/auth-handler';
 import styles from './Login.module.css';
 
@@ -12,6 +12,9 @@ const Login = () => {
 		rememberMe: false,
 	});
 	const { authDispatch } = useAuth();
+	const { likesDispatch } = useLikes();
+	const { watchLaterDispatch } = useWatchLater();
+	const { playlistsDispatch } = usePlaylists();
 	const navigate = useNavigate();
 
 	const inputHandler = (e) => {
@@ -27,15 +30,24 @@ const Login = () => {
 	const loginHandler = (e) => {
 		if (user.email && user.password) {
 			e.preventDefault();
-			authHandler({ authType: 'login', user, authDispatch, setUser, navigate });
+			authHandler({
+				authType: 'login',
+				user,
+				authDispatch,
+				setUser,
+				navigate,
+				likesDispatch,
+				watchLaterDispatch,
+				playlistsDispatch,
+			});
 		}
 	};
 
 	const guestLoginHandler = () =>
 		setUser((prev) => ({
 			...prev,
-			email: 'adarshbalika@gmail.com',
-			password: 'adarshBalika123',
+			email: 'kartik@gmail.com',
+			password: 'KartikC123',
 			rememberMe: true,
 		}));
 
@@ -91,7 +103,7 @@ const Login = () => {
 				type="button"
 				onClick={guestLoginHandler}
 			>
-				Guest Login
+				Use Guest Credentails
 			</button>
 			<button className={`${styles.btn} ${styles.primaryBtn}`} type="button" onClick={loginHandler}>
 				Login

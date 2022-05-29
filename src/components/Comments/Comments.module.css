@@ -1,0 +1,76 @@
+.commentContainer {
+	padding: 1.6rem 0;
+	margin-bottom: 8rem;
+}
+
+.title {
+	font-size: var(--text-md);
+	text-decoration: underline;
+}
+
+.newCommentBox {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.commentInput {
+	font-family: inherit;
+	box-sizing: border-box;
+	font-size: var(--text-md);
+	padding: 4px;
+	resize: none;
+	width: 100%;
+}
+
+.newCommentInput {
+	margin-top: 1.6rem;
+}
+
+.commentBoxButton {
+	margin-top: 10px;
+	display: flex;
+	gap: 1.6rem;
+}
+
+.cancelBtn {
+	background-color: var(--white-secondary);
+	color: var(--black);
+}
+
+.commentBoxButton > button:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+.comment {
+	font-size: var(--text-md);
+	padding: 10px;
+	margin-top: 10px;
+	border: 1px solid var(--grey);
+	display: flex;
+}
+
+.comment > span {
+	font-weight: 700;
+	display: inline-block;
+	margin-bottom: 8px;
+}
+
+.commentBtns {
+	margin-left: auto;
+	display: flex;
+	gap: 1.6rem;
+	align-items: flex-end;
+}
+
+.commentBtns > button {
+	background-color: transparent;
+	font-size: var(--text-md);
+	color: var(--white-primary);
+	padding: 8px 10px;
+}
+
+.editingInput {
+	width: 100%;
+}

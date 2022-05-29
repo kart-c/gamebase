@@ -9,6 +9,6 @@ export const getPlaylist = async (token, playlistsDispatch, setLoading) => {
 	} catch (error) {
 		console.error('ERROR: ', error);
 	} finally {
-		setLoading(false);
+		setLoading && setLoading(false);
 	}
 };

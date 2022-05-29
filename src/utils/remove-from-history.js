@@ -10,6 +10,6 @@ export const removeFromHistory = async (token, _id, historyDispatch) => {
 			});
 		}
 	} catch (error) {
-		console.error('ERROR: ', error.response);
+		console.error('ERROR: ', error);
 	}
 };
