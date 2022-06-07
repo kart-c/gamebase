@@ -7,4 +7,4 @@
 - Add error page
 - Add search with debounce
 - Add video directly to playlist
-- Clicking on options menu, closes another already opened options menu
+- Clicking on options menu or outside, closes another already opened options menu
