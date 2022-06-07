@@ -87,10 +87,13 @@
 		flex-wrap: wrap;
 	}
 
-	.header input {
-		display: block;
-		width: 100%;
+	.searchContainer {
 		order: 2;
+		width: 100%;
+	}
+
+	.searchContainer input {
+		display: block;
 		max-width: 100%;
 		margin-top: 1.6rem;
 	}
