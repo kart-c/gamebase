@@ -28,19 +28,17 @@ const Login = () => {
 	};
 
 	const loginHandler = (e) => {
-		if (user.email && user.password) {
-			e.preventDefault();
-			authHandler({
-				authType: 'login',
-				user,
-				authDispatch,
-				setUser,
-				navigate,
-				likesDispatch,
-				watchLaterDispatch,
-				playlistsDispatch,
-			});
-		}
+		e.preventDefault();
+		authHandler({
+			authType: 'login',
+			user,
+			authDispatch,
+			setUser,
+			navigate,
+			likesDispatch,
+			watchLaterDispatch,
+			playlistsDispatch,
+		});
 	};
 
 	const guestLoginHandler = () =>
@@ -52,7 +50,7 @@ const Login = () => {
 		}));
 
 	return (
-		<form className={` ${styles.form}`}>
+		<form className={` ${styles.form}`} onSubmit={loginHandler}>
 			<h3>Login</h3>
 			<div className={`input-container ${styles.inputContainer}`}>
 				<label htmlFor="email" className={styles.firstLabel}>
@@ -105,7 +103,7 @@ const Login = () => {
 			>
 				Use Guest Credentails
 			</button>
-			<button className={`${styles.btn} ${styles.primaryBtn}`} type="button" onClick={loginHandler}>
+			<button className={`${styles.btn} ${styles.primaryBtn}`} type="submit">
 				Login
 			</button>
 			<div className={styles.seperator}></div>

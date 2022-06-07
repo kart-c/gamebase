@@ -25,18 +25,16 @@ const Signup = () => {
 	};
 
 	const signupHandler = (e) => {
-		if (checkbox && user.firstName && user.email && user.password && user.confirmPassword) {
-			e.preventDefault();
-			if (user.password === user.confirmPassword) {
-				authHandler({ authType: 'signup', user, setUser, navigate, authDispatch });
-			} else {
-				toast.error('passwords should be same');
-			}
+		e.preventDefault();
+		if (user.password === user.confirmPassword) {
+			authHandler({ authType: 'signup', user, setUser, navigate, authDispatch });
+		} else {
+			toast.error('passwords should be same');
 		}
 	};
 
 	return (
-		<form className={` ${styles.form}`}>
+		<form className={` ${styles.form}`} onSubmit={signupHandler}>
 			<h3>Signup</h3>
 			<div className={styles.nameContainer}>
 				<div className={`input-container ${styles.inputContainer}`}>
@@ -124,11 +122,7 @@ const Signup = () => {
 				/>
 				<label htmlFor="tandc">Accept the terms and conditions</label>
 			</div>
-			<button
-				className={`${styles.btn} ${styles.primaryBtn}`}
-				type="submit"
-				onClick={signupHandler}
-			>
+			<button className={`${styles.btn} ${styles.primaryBtn}`} type="submit">
 				Signup
 			</button>
 			<div className={styles.seperator}></div>
