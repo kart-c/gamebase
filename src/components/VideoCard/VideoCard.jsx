@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth, useLikes, useWatchLater } from '../../context';
 import { likesHandler, deleteLike, addToWatchLater, deleteWatchLater } from '../../utils';
@@ -25,6 +25,7 @@ const VideoCard = ({
 		watchLater: false,
 		playlist: false,
 	});
+	const optionsRef = useRef();
 	const navigate = useNavigate();
 	const {
 		authState: { token },
@@ -34,6 +35,19 @@ const VideoCard = ({
 		watchLaterState: { watchlater },
 		watchLaterDispatch,
 	} = useWatchLater();
+
+	useEffect(() => {
+		const closeOptions = (e) => {
+			if (!optionsRef.current.contains(e.target)) {
+				setIsVisible('');
+			}
+		};
+		if (optionsRef.current) {
+			document.addEventListener('click', closeOptions);
+		}
+
+		return () => document.removeEventListener('click', closeOptions);
+	}, [isVisible]);
 
 	const optionsHandler = (e, _id) => {
 		e.stopPropagation();
@@ -103,7 +117,7 @@ const VideoCard = ({
 			<span className={styles.time}>{time}</span>
 			<div className={styles.content}>
 				{isVisible === _id ? (
-					<div className={`${styles.menu}`}>
+					<div className={`${styles.menu}`} ref={optionsRef}>
 						<button
 							className="btn btn-primary"
 							onClick={(e) => likeBtnHandler(e, _id)}
