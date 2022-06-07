@@ -5,6 +5,7 @@ import styles from './Home.module.css';
 
 const Home = () => {
 	const [videos, setVideos] = useState([]);
+	const [isVisible, setIsVisible] = useState('');
 	const [filterInput, setFilterInput] = useState('');
 	const [loading, setLoading] = useState(true);
 	useEffect(() => {
@@ -32,7 +33,12 @@ const Home = () => {
 					) : filteredVideos.length > 0 ? (
 						filteredVideos.map((video) => (
 							<li key={video._id}>
-								<VideoCard {...video} videos={videos} />
+								<VideoCard
+									{...video}
+									videos={videos}
+									isVisible={isVisible}
+									setIsVisible={setIsVisible}
+								/>
 							</li>
 						))
 					) : (

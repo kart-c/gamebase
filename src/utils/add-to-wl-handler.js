@@ -23,6 +23,6 @@ export const addToWatchLater = async ({
 		console.error('ERROR: ', error);
 	} finally {
 		setBtnLoading((prev) => ({ ...prev, watchLater: false }));
-		setIsVisible(false);
+		setIsVisible('');
 	}
 };

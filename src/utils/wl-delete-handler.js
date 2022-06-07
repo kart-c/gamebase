@@ -23,6 +23,6 @@ export const deleteWatchLater = async ({
 		console.error('ERROR: ', error);
 	} finally {
 		setBtnLoading((prev) => ({ ...prev, watchLater: true }));
-		setIsVisible((prev) => !prev);
+		setIsVisible('');
 	}
 };

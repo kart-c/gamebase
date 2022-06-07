@@ -15,8 +15,9 @@ const VideoCard = ({
 	videoThumbnail,
 	viewCount,
 	videos,
+	isVisible,
+	setIsVisible,
 }) => {
-	const [isVisible, setIsVisible] = useState(false);
 	const [modalActive, setModalActive] = useState(false);
 	const [playlistVideo, setPlaylistVideo] = useState(null);
 	const [btnLoading, setBtnLoading] = useState({
@@ -34,9 +35,13 @@ const VideoCard = ({
 		watchLaterDispatch,
 	} = useWatchLater();
 
-	const optionsHandler = (e) => {
+	const optionsHandler = (e, _id) => {
 		e.stopPropagation();
-		setIsVisible((prev) => !prev);
+		if (isVisible === _id) {
+			setIsVisible('');
+		} else {
+			setIsVisible(_id);
+		}
 	};
 
 	const videoExists = likesState.likes.some((video) => video._id === _id);
@@ -74,7 +79,7 @@ const VideoCard = ({
 	const playlistHandler = (e, _id) => {
 		e.stopPropagation();
 		if (token) {
-			setIsVisible(false);
+			setIsVisible('');
 			setModalActive(true);
 			const video = videos.find((video) => video._id === _id);
 			setPlaylistVideo(video);
@@ -97,7 +102,7 @@ const VideoCard = ({
 			</div>
 			<span className={styles.time}>{time}</span>
 			<div className={styles.content}>
-				{isVisible && (
+				{isVisible === _id ? (
 					<div className={`${styles.menu}`}>
 						<button
 							className="btn btn-primary"
@@ -119,7 +124,7 @@ const VideoCard = ({
 							<i className="fa-solid fa-list-ul"></i> Add to playlist
 						</button>
 					</div>
-				)}
+				) : null}
 				<img src={channelThumbnail} alt={channelName} className="avatar avatar-sm" loading="lazy" />
 				<div className={styles.videoDetails}>
 					<h4 title={title}>{title}</h4>
@@ -129,7 +134,7 @@ const VideoCard = ({
 						<span>{likes} likes</span>
 					</div>
 				</div>
-				<button className={styles.options} onClick={optionsHandler}>
+				<button className={styles.options} onClick={(e) => optionsHandler(e, _id)}>
 					<i className="fa-solid fa-ellipsis-vertical"></i>
 				</button>
 			</div>

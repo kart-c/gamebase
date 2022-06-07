@@ -23,6 +23,6 @@ export const likesHandler = async ({
 		console.error('ERROR: ', error);
 	} finally {
 		setBtnLoading((prev) => ({ ...prev, likes: false }));
-		setIsVisible(false);
+		setIsVisible('');
 	}
 };

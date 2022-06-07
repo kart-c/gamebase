@@ -17,6 +17,6 @@ export const deleteLike = async ({ _id, token, likesDispatch, setBtnLoading, set
 		console.error('ERROR: ', error);
 	} finally {
 		setBtnLoading((prev) => ({ ...prev, likes: false }));
-		setIsVisible(false);
+		setIsVisible('');
 	}
 };
