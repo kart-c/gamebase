@@ -29,7 +29,7 @@ const SinglePlaylist = () => {
 					))
 				) : (
 					<div className={styles.noVideos}>
-						<h4>You do not have any liked Videos</h4>
+						<h4>You do not have videos in this playlist</h4>
 					</div>
 				)}
 			</HrCardWrapper>
